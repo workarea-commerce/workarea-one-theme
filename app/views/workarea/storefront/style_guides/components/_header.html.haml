@@ -1,0 +1,18 @@
+#header.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'header')
+
+  %p A stylistic wrapper for page headers, providing modifiers to implement responsive layout.
+
+  .style-guide__example-block
+    .header
+      %h1.header__title Header Title
+      %h4.header__sub-title Header Sub-title
+
+  %p Header can be centered for small devices
+
+  .style-guide__example-block
+    .header.header--center-at-small
+      %h1.header__title Header Title
+      %h4.header__sub-title Header Sub-title
+

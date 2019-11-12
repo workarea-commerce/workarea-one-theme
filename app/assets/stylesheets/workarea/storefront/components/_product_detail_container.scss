@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    #PRODUCT-DETAIL-CONTAINER
+\*------------------------------------*/
+
+.product-detail-container {}
+
+    .product-detail-container__section {
+        margin: $spacing-unit * 2;
+
+        @include respond-to($medium-breakpoint) {
+            margin: $spacing-unit * 5;
+        }
+    }
+
+        .product-detail-container__description {}
+
+            .product-detail-container__description-heading {}
+
+            .product-detail-container__description-body {}

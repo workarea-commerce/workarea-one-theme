@@ -1,0 +1,49 @@
+/*------------------------------------*\
+    #UTILITY-NAV
+\*------------------------------------*/
+
+$utility-nav-bg-color: $utility-nav-background-color !default;
+$utility-nav-top-offset: 53px !default;
+$utility-nav-top-offset-medium: 73px !default;
+$utility-nav-width: 160px !default;
+
+
+/**
+ * 1. Element selector used because this is a commonly used append point,
+ * we want to reliably taget all links that are appended via plugins without
+ * having to override an unknown number of views
+ */
+.utility-nav {
+    position: absolute;
+    top: $utility-nav-top-offset;
+    right: 0;
+    left: 0;
+    z-index: index($page-header, utility-nav);
+    padding: $spacing-unit;
+    background-color: $utility-nav-bg-color;
+    box-shadow: 0 2px 8px $overlay-shadow-color;
+    opacity: 0;
+    transform: translateY(-66%);
+    pointer-events: none;
+    transition: opacity 0.15s ease-in, transform 0.15s ease-in;
+
+    @include respond-to($medium-breakpoint) {
+        top: $utility-nav-top-offset-medium;
+        left: 80%;
+        width: $utility-nav-width;
+    }
+}
+
+.utility-nav--is-open {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+    .utility-nav__link {
+        @extend %link;
+        @extend %link--secondary;
+        display: block;
+        padding: $spacing-unit;
+    }

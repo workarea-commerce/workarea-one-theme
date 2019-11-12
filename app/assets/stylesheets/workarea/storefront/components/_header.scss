@@ -1,0 +1,31 @@
+/*------------------------------------*\
+    #HEADER
+\*------------------------------------*/
+
+.header {
+    margin-bottom: $spacing-unit * 4;
+}
+
+.header--center-at-small {
+    text-align: center;
+
+    @include respond-to($medium-breakpoint) {
+        text-align: left;
+    }
+}
+
+    .header__title {}
+
+    .header__title--center-at-small {
+        text-align: center;
+
+        @include respond-to($medium-breakpoint) {
+            text-align: left;
+        }
+    }
+
+    .header__subtitle {}
+
+    .header__filter-button {
+        text-align: center;
+    }

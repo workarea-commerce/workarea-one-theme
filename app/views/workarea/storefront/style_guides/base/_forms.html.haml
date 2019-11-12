@@ -1,0 +1,91 @@
+#forms-base.style-guide__subsection
+
+  %h3= link_to_style_guide('base', 'forms_base')
+
+  %p Global form & form control styling.
+
+  %p should apply a bottom margin to containment elements:
+  .style-guide__example-block
+    %fieldset Fieldset Element
+  .style-guide__example-block
+    %legend Legend Element
+
+  %p should display a larger font for elements:
+  .style-guide__example-block
+    %p Regular font-size
+    .select-menu
+      %select
+        %option Larger Font Size
+    %input{ value: 'Larger Font Size' }
+    %textarea Larger Font Size
+
+  %p should add <code>focus-ring</code> to rectangular form controls (click to focus):
+  .style-guide__example-block
+    %input{ type: 'text', value: 'Input' }
+  .style-guide__example-block
+    %textarea Textarea
+  .style-guide__example-block
+    .select-menu
+      %select
+        %option Select Option
+
+  %p should not allow selects to exceed the width of their container:
+  .style-guide__example-block{ style: 'width: 100px;' }
+    .select-menu
+      %select
+        %option Supercalifragilisticexpialidocious
+
+  %p should align a label to the top of a textarea:
+  .style-guide__example-block
+    %label Label
+    %textarea Textarea
+
+  %p should support a disabled state:
+  .style-guide__example-block
+    %button{ disabled: true } Disabled Button
+  .style-guide__example-block
+    %input{ disabled: true, value: 'Disabled Input' }
+  .style-guide__example-block
+    %textarea{ disabled: true } Disabled Textarea
+  .style-guide__example-block
+    .select-menu
+      %select{ disabled: true }
+        %option Disabled Select
+        %option Disabled Select
+        %option Disabled Select
+  .style-guide__example-block
+    .select-menu
+      %select
+        %optgroup
+          %option Select Optgroup Option
+        %optgroup{ disabled: true }
+          %option Disabled Select Optgroup Option
+  .style-guide__example-block
+    .select-menu
+      %select
+        %option Select Option
+        %option{ disabled: true } Disabled Select Option
+        %option Select Option
+  .style-guide__example-block
+    %fieldset{ disabled: true }
+      %button Disabled Button
+      %input{ value: 'Disabled Input' }
+      %textarea Disabled Textarea
+      .select-menu
+        %select
+          %option Disabled Option
+
+  %p should set the color of placeholder text:
+  .style-guide__example-block
+    %input{ placeholder: 'Placeholder Text' }
+  .style-guide__example-block
+    %textarea{ placeholder: 'Placeholder Text' }
+  .style-guide__example-block
+    %textarea{ placeholder: 'Placeholder Text' }
+
+  %p should style checkboxes
+  .style-guide__example-block
+    .button-property
+      .value= check_box_tag :email_signup, true, params[:email_signup]
+      = label_tag :email_signup, nil, class: 'button-property__name' do
+        %span.button-property__text Example checkbox label

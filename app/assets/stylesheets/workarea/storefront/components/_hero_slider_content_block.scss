@@ -1,0 +1,75 @@
+/*------------------------------------*\
+    #HERO-SLIDER-CONTENT-BLOCK
+\*------------------------------------*/
+
+$hero-slider-block-content-offset: 45px !default;
+$hero-slider-block-content-offset-wide: 120px !default;
+
+$hero-slider-heading-color: $link-secondary-color !default;
+$hero-slider-heading-background-color: $primary-color !default;
+$hero-slider-sub-heading-color: $primary-nav-links !default;
+$hero-slider-sub-heading-background-color: $background-secondary-color !default;
+
+
+.hero-slider-content-block {}
+
+.hero-slider-content-block--full-bleed {
+    @include full-bleed-container;
+}
+
+    .hero-slider-content-block__slide {
+        @include respond-to($medium-breakpoint) {
+            position: relative;
+        }
+    }
+
+        .hero-slider-content-block__slide-content-wrapper {
+
+        }
+
+        .hero-slider-content-block__slide-content {
+            padding: $spacing-unit;
+
+            @include respond-to($medium-breakpoint) {
+                position: absolute;
+                bottom: $hero-slider-block-content-offset;
+                left: $hero-slider-block-content-offset;
+            }
+
+            @include respond-to($wide-breakpoint) {
+                bottom: $hero-slider-block-content-offset-wide;
+            }
+
+            .hero-slider-content-block--full-bleed & {
+                left: auto;
+            }
+        }
+
+            .hero-slider-content-block__slide-heading {
+                @extend %heading;
+                @extend %heading--1;
+                @extend %heading--fancy;
+                margin-bottom: 0;
+                padding: $spacing-unit;
+                color: $hero-slider-heading-color;
+                background-color: $hero-slider-heading-background-color;
+            }
+
+            .hero-slider-content-block__slide-sub-heading {
+                @extend %heading;
+                @extend %heading--5;
+                display: inline-block;
+                padding: $spacing-unit;
+                color: $hero-slider-sub-heading-color;
+                background-color: $hero-slider-sub-heading-background-color;
+            }
+
+        .hero-slider-content-block__slide-image {
+            margin: 0 auto;
+
+            .hero-slider-content-block--full-bleed & {
+                width: 100%;
+            }
+        }
+
+        .hero-slider-content-block__slide-link {}

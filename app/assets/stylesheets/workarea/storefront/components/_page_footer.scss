@@ -1,0 +1,96 @@
+/*------------------------------------*\
+    #PAGE-FOOTER
+\*------------------------------------*/
+
+$page-footer-background-color: $background-secondary-color !default;
+$page-footer-color: $footer-text !default;
+$page-footer-email-signup-label-opacity: 0.6 !default;
+$page-footer-email-button-height: 40px !default;
+
+
+.page-footer {
+    padding: ($spacing-unit * 4) 0;
+    color: $page-footer-color;
+    background-color: $page-footer-background-color;
+}
+
+    /**
+     * 1. make sure no content block can inject `p` tags that will break layout.
+     */
+    .page-footer__nav {
+        margin-bottom: $spacing-unit * 4;
+        text-align: center;
+
+        @include respond-to($medium-breakpoint) {
+            margin-bottom: 0;
+            text-align: left;
+        }
+
+        p { margin: 0; } /* [1] */
+    }
+
+    .page-footer__help {
+        @extend %list-reset;
+        margin-bottom: $spacing-unit * 4;
+        text-align: center;
+
+        @include respond-to($medium-breakpoint) {
+            margin-bottom: 0;
+            text-align: left;
+        }
+    }
+
+        .page-footer__help-item {
+            padding-top: $spacing-unit;
+        }
+
+            .page-footer__help-link {
+                @extend %link--secondary;
+            }
+
+    .page-footer__email-signup {
+        margin: 0 auto;
+        width: 100%;
+        // max-width: $page-footer-email-signup-max-width;
+        text-align: center;
+
+        @include respond-to($medium-breakpoint) {
+            text-align: left;
+        }
+    }
+
+        .page-footer__heading {
+            @extend %heading;
+            @extend %heading--fancy;
+            color: $page-footer-color;
+        }
+
+        .page-footer__email-signup-form {
+            display: inline-block;
+        }
+
+            .page-footer__email-signup-label {
+                display: block;
+                margin-bottom: $spacing-unit * 2;
+                opacity: $page-footer-email-signup-label-opacity;
+            }
+
+            /**
+             * 1. Positioning context for page-footer__email-button
+             */
+            .page-footer__email-container {
+                position: relative; /* [1] */
+            }
+
+            .page-footer__email-value {
+                display: block;
+            }
+
+            .page-footer__email-action {
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                height: $page-footer-email-button-height;
+            }

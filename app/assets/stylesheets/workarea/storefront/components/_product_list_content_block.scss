@@ -1,0 +1,20 @@
+/*------------------------------------*\
+    #PRODUCT-LIST-CONTENT-BLOCK
+\*------------------------------------*/
+
+/**
+ * 1. Since slick adds various DOM elements the .grid--flush class
+ * does not remove the padding for grid__cells in the context of a slider.
+ * This override is a little unorthodox but since avalanche generates all the
+ * grid CSS there isn't a better place to do this contextual styling.
+ */
+.product-list-content-block {
+    .grid__cell { /* [1] */
+        padding-left: 0;
+    }
+}
+
+    .product-list-content-block__heading {
+        @extend %heading;
+        @extend %heading--2;
+    }

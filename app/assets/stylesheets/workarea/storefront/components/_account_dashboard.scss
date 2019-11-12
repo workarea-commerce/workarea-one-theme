@@ -1,0 +1,33 @@
+/*------------------------------------*\
+    #ACCOUNT-DASHBOARD
+\*------------------------------------*/
+
+$account-dashboard-component-padding: $spacing-unit * 2 !default;
+$account-dashboard-component-bg-color: $background-color-component !default;
+
+
+.account-dashboard {}
+
+    .account-dashboard__heading {}
+
+    .account-dashboard__component {
+        position: relative;
+        margin-bottom: $spacing-unit * 2;
+        padding: $account-dashboard-component-padding;
+        background-color: $account-dashboard-component-bg-color;
+    }
+
+        .account-dashboard__component-heading {
+            @extend %heading;
+            @extend %heading--4;
+        }
+
+        .account-dashboard__component-action {
+            position: absolute;
+            top: $account-dashboard-component-padding;
+            right: $account-dashboard-component-padding;
+        }
+
+        .account-dashboard__component-action--static {
+            position: static;
+        }

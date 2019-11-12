@@ -1,0 +1,13 @@
+/*------------------------------------*\
+    #PROMO-CODE-ACCORDION
+\*------------------------------------*/
+
+
+.promo-code-accordion {}
+
+    .promo-code-accordion__heading {
+        @extend %heading;
+        @extend %heading--4;
+    }
+
+    .promo-code-accordion__content {}

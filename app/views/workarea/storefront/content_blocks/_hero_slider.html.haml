@@ -1,0 +1,15 @@
+.hero-slider-content-block{ class: ('hero-slider-content-block--full-bleed' if view_model.data[:full_bleed]), data: { slick_slider: view_model.content_block_options  } }
+  - view_model.series.each_with_index do |slide, i|
+    - if slide.data[:image].present?
+      .hero-slider-content-block__slide
+        = image_tag view_model.find_asset(slide.data[:image]).url, class: 'hero-slider-content-block__slide-image', alt: slide.data[:alt_text].presence
+        - if slide.has_content?
+          - slide_content = capture_haml do
+            %div{ class: ('content-wrapper' if view_model.data[:full_bleed]) }
+              .hero-slider-content-block__slide-content
+                - if slide.data[:heading].present?
+                  .hero-slider-content-block__slide-heading= slide.data[:heading]
+                - if slide.data[:sub_heading].present?
+                  .hero-slider-content-block__slide-sub-heading= slide.data[:sub_heading]
+
+          = link_to_if slide.data[:url].present?, slide_content, slide.data[:url]

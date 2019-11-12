@@ -1,0 +1,78 @@
+/*------------------------------------*\
+    #CATEGORY-SUMMARY-CONTENT-BLOCK
+\*------------------------------------*/
+
+$category-summary-content-block-default-background: $primary-color !default;
+$category-summary-content-padding-top: 70% !default;
+
+$category-summary-content-block-content-background: $primary-color !default;
+$category-summary-content-block-content-min-height-mobile: 450px !default;
+
+.category-summary-content-block {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+    .category-summary-content-block__content {
+        display: inline-block;
+        position: relative;
+        min-height: $category-summary-content-block-content-min-height-mobile;
+        background-color: $category-summary-content-block-default-background;
+        flex: 3 0 0%;
+
+        @include respond-to($medium-breakpoint) {
+            min-height: 0;
+            flex: 1 0 0%;
+        }
+
+        &:after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: $overlay-shadow-color;
+            content: '';
+            opacity: 0;
+            transition: opacity 0.15s ease-in;
+        }
+
+        &:hover:after {
+            opacity: 0.6;
+        }
+    }
+
+        .category-summary-content-block__content-container {
+            position: absolute;
+            top: 35%;
+            z-index: index($category-summary-content-block, content);
+        }
+
+        .category-summary-content-block__heading {
+            @extend %heading;
+            @extend %heading--2;
+            @extend %link--secondary;
+            display: inline-block;
+            padding: $spacing-unit ($spacing-unit * 2);
+            background-color: $category-summary-content-block-content-background;
+            opacity: 1;
+        }
+
+        .category-summary-content-block__call-to-action {
+            @extend %link--secondary;
+            display: block;
+            padding-left: $spacing-unit * 2;
+            opacity: 1;
+        }
+
+    .category-summary-content-block__products {
+        @include respond-to($medium-breakpoint) {
+            flex: 1 0 0%;
+        }
+
+        @include respond-to($wide-breakpoint) {
+            flex: 3 0 0%;
+        }
+    }
+
+    .category-summary-content-block__empty-message {}

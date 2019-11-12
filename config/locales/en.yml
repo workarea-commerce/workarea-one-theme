@@ -1,0 +1,30 @@
+en:
+  workarea:
+    storefront:
+      blogs:
+        related_products: Featured Products
+      checkouts:
+        promo_code_toggle: Use a promo code
+      content_blocks:
+        category_summary:
+          view_all: View all
+      email_signup:
+        heading: Be in the know
+        message: Sign up for the latest news, offers and styles
+      layouts:
+        account_menu: Account Menu
+        drop_down_menu: Link with drop down menu
+      products:
+        close_filter_results: Close Filters
+        filter_title: "%{name}"
+      reviews:
+        first_name_field_note: Only the first letter of your name will be displayed.
+        last_name_field_note: Only the first letter of your name will be displayed.
+        email_field_note: Will only be used if we need to get in touch with you.
+      shares:
+        share_heading: Share
+      users:
+        account_settings: Account Settings
+        your_orders: Your Orders
+      wish_lists:
+        share_your_wishlist: Share your wishlist

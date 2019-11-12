@@ -1,0 +1,110 @@
+/*------------------------------------*\
+    #MIDNIGHT-COLOR-SCHEME
+\*------------------------------------*/
+/**
+ * Color Variables
+ *
+ * These variables should always be aliased as Functional Variables at
+ * the bottom of this file.
+ */
+
+$blue:                              #3366cc !default;
+$yellow:                            #fdcc5d !default;
+$red:                               #ee283b !default;
+$green:                             #19c06a !default;
+
+$white:                             #ffffff !default;
+$gray:                              #666666 !default;
+$black:                             #000000 !default;
+
+$black-alpha-15:                    rgba($black, 0.15) !default;
+$black-alpha-50:                    rgba($black, 0.50) !default;
+
+$white-alpha-50:                    rgba($white, 0.50) !default;
+
+$transparent:                       transparent !default;
+
+/**
+ * Theme colors
+ */
+
+$mustard: #fdd74c !default;
+$gray: #cfcccb !default;
+$lightest-gray: #f7f7f7 !default;
+$light-gray: #e0e0e0 !default;
+$dark-gray: #9b9b9b !default;
+$off-black: #081c18 !default;
+$denim: #223540 !default;
+$lightest-denim: #71b2cc !default;
+$light-denim: #385b66 !default;
+$dark-denim: #152026 !default;
+
+// TODO: Figure out a better way to handle this. Preferred breaking BEM to doing more gross scss.erb dynamic imports
+.color-box__swatch--mustard { background: $mustard; }
+.color-box__swatch--gray { background: $gray; }
+.color-box__swatch--lightest-gray { background: $lightest-gray; }
+.color-box__swatch--light-gray { background: $light-gray; }
+.color-box__swatch--dark-gray { background: $dark-gray; }
+.color-box__swatch--off-black { background: $off-black; }
+.color-box__swatch--denim { background: $denim; }
+.color-box__swatch--lightest-denim { background: $lightest-denim; }
+.color-box__swatch--light-denim { background: $light-denim; }
+.color-box__swatch--dark-denim { background: $dark-denim; }
+
+
+/**
+ * Global Functional Color Variables
+ * These variables should be used at the top of the Component SCSS that they
+ * belong to.
+ *
+ * This method helps aid the quick reskinning of Components.
+ */
+
+$primary-color: $mustard !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$background-color: $dark-denim !default;
+$background-color-component: $denim !default;
+$background-secondary-color: $denim !default;
+
+$border-color: $light-denim !default;
+$highlight-color: $background-color !default;
+
+$font-color: $lightest-gray !default;
+$heading-color: $lightest-gray !default;
+$heading-color-secondary: $lightest-gray !default;
+$product-name-color: $lightest-gray !default;
+
+$header-icon-color: $lightest-gray !default;
+$header-icon-color-hover: $primary-color !default;
+$utility-nav-background-color: $light-denim !default;
+
+$primary-nav-background-color: $background-secondary-color !default;
+$primary-nav-border-color: $border-color !default;
+$primary-nav-links: $lightest-gray !default;
+$primary-nav-dropdown-links: $lightest-gray !default;
+$mobile-nav-links: $lightest-gray !default;
+
+$footer-text: $lightest-gray !default;
+
+$link-color: $primary-color !default;
+$link-color-hover: $primary-color-dark !default;
+$link-secondary-color: $primary-nav-links !default;
+$link-secondary-color-hover: $lightest-denim !default;
+$button-text-color: $off-black !default;
+
+$label-color: $lightest-gray !default;
+$input-color: $off-black !default;
+$input-background-color: $lightest-gray !default;
+$input-hover-border-color: lighten($border-color, 35%) !default;
+$input-secondary-color: $off-black !default;
+$input-secondary-bg-color: $lightest-gray !default;
+$input-invalid-color: $red !default;
+$input-required-color: $red !default;
+
+$overlay-shadow-color: rgba($black, 0.1) !default;
+
+$focus-ring-color: $blue !default;
+
+$ui-dialog-titlebar-bg-color: $background-secondary-color !default;

@@ -1,0 +1,69 @@
+#button.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'button')
+
+  %p Displays an element as interactive button.
+
+  %p should work with <code>button[type=button]</code> elements:
+  .style-guide__example-block
+    = button_tag 'Button', class: 'button', type: 'button'
+
+  %p should work with <code>button[type=submit]</code> elements:
+  .style-guide__example-block
+    = button_tag 'Button', class: 'button', type: 'submit'
+
+  %p should work with <code>input[type=submit]</code> elements:
+  .style-guide__example-block
+    = submit_tag 'Button', class: 'button'
+
+  %p should work with <code>a</code> elements:
+  .style-guide__example-block
+    = link_to 'Button', '#', class: 'button'
+
+  %p should style non-interactive buttons wrapped in an <code>a</code> element:
+  .style-guide__example-block
+    = link_to '#' do
+      %span.button Span Button
+
+#button--small.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'button__small')
+
+  %p should reduce the size of the button:
+  .style-guide__example-block
+    = button_tag 'Button Element', class: 'button button--small'
+
+#button--large.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'button__large')
+
+  %p should increase the size of the button:
+  .style-guide__example-block
+    = button_tag 'Button Element', class: 'button button--large'
+
+#button--full-width.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'button__full_width')
+
+  %p should make the button full width
+  .style-guide__example-block
+    = button_tag 'Button Element', class: 'button button--full-width'
+
+
+#button--full-height.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'button__full_height')
+
+  %p should make the button full height of it's container
+  .style-guide__example-block
+    %div{ style: "height: 100px;"}
+      = button_tag 'Button Element', class: 'button button--full-height'
+
+
+#button--transparent.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'button__transparent')
+
+  %p should make the button background transparent
+  .style-guide__example-block
+    = button_tag 'Button Element', class: 'button button--transparent'

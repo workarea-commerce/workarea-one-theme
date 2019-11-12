@@ -1,0 +1,7 @@
+inherit_from: .rails-rubocop.yml
+
+AllCops:
+  Exclude:
+    - 'test/dummy/**/*'
+    - 'lib/one_theme.rb'
+    - 'lib/one_theme/**/*'

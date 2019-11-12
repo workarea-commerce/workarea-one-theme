@@ -1,0 +1,27 @@
+/*------------------------------------*\
+    #LINKS
+\*------------------------------------*/
+
+a,
+%link,
+.link {
+    color: $link-color;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        color: $link-color-hover;
+    }
+}
+
+%link--secondary,
+.link--secondary {
+    color: $link-secondary-color;
+    opacity: 0.6;
+    transition: opacity 0.15s ease-in;
+
+    &:hover {
+        color: $link-secondary-color-hover;
+        opacity: 1;
+    }
+}

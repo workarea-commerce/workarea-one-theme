@@ -1,0 +1,197 @@
+/*------------------------------------*\
+    #FORMS
+\*------------------------------------*/
+
+// scss-lint:disable QualifyingElement
+
+$forms-color:              $font-color !default;
+$forms-placeholder-color:  $input-color !default;
+
+$forms-disabled-opacity:  0.5 !default;
+
+// Checkbox settings
+$checkbox-size: 18px !default;
+$checkbox-color: $white !default;
+$checkbox-border: 1px solid $gray !default;
+
+$checkbox-fill-color: $primary-color !default;
+$checkbox-box-shadow: 0 0 0 0 $checkbox-fill-color inset !default;
+$checkbox-box-shadow-checked: 0 0 0 ($checkbox-size / 2) $checkbox-fill-color inset !default;
+$checkbox-easing-function: cubic-bezier(0.75, 0.01, 0.48, 2);
+
+// Radio button settings
+$radio-button-size: 18px !default;
+$radio-button-inner-size: 4px !default;
+$radio-button-color: $white !default;
+$radio-button-border: 1px solid $gray !default;
+
+$radio-button-fill-color: $primary-color !default;
+$radio-button-box-shadow: 0 0 0 0 $radio-button-fill-color inset !default;
+$radio-button-box-shadow-checked: 0 0 0 ($radio-button-size / 2) $radio-button-fill-color inset !default;
+$radio-button-inner-bg-color: $white !default;
+$radio-button-easing-function: cubic-bezier(0.75, 0.01, 0.48, 2);
+
+
+/**
+ * Provide default margins for form containment elements.
+ */
+fieldset, legend {
+    margin-bottom: $vertical-margin;
+}
+
+
+/**
+ * Set a larger default font size for basic form controls
+ */
+select,
+input, textarea {
+    color: $forms-color;
+    font-size: $form-control-font-size;
+    line-height: $form-control-line-height;
+}
+
+
+/**
+ * Ensure select menus cannot exceed with width of their parents
+ */
+select {
+    max-width: 100%;
+}
+
+
+/**
+ * Ensure text within in a `textarea` displays at the top of the element now
+ * that they can be wrapped within a `display: table-cell` element.
+ */
+textarea {
+    vertical-align: top;
+}
+
+
+/**
+ * Ensure form controls in OSX will look more consistent with other OSes that do
+ * not utilize sub-pixel anti-aliasing.
+ */
+select,
+button,
+input, textarea {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing:  antialiased;
+}
+
+
+/**
+ * Show clear indication that a form control is disabled by changing the cursor:
+ *
+ * 1. if the element itself is disabled
+ * 2. if the fieldset wrapping the element is disabled
+ */
+button,
+input, textarea,
+select, optgroup, option {
+    &[disabled], /* [1] */
+    fieldset[disabled] & { /* [2] */
+        cursor: not-allowed;
+        opacity: $forms-disabled-opacity;
+    }
+}
+
+
+/**
+ * Set default color for elements using `[placeholder]` attributes.
+ */
+::placeholder {
+    color: $forms-placeholder-color;
+}
+
+
+/**
+ * 1. animating box-shadow isn't preferable but it's the best way to acheive this effect
+ */
+input[type='checkbox'] {
+    position: relative;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    border: $checkbox-border;
+    border-radius: $border-radius;
+    box-shadow: $checkbox-box-shadow;
+    transition: box-shadow 0.15s $checkbox-easing-function; /* [1] */
+    appearance: none;
+
+    &:after {
+        display: block;
+        position: absolute;
+        top: -50%;
+        width: $checkbox-size;
+        height: $checkbox-size / 2;
+        color: $checkbox-color;
+        text-align: center;
+        content: '✓';
+        opacity: 0;
+        transform: scale(0.2) translateY(50%);
+        transition: transform 0.15s $checkbox-easing-function, opacity 0.15s $checkbox-easing-function;
+    }
+
+    &:checked:after {
+        opacity: 1;
+        transform: scale(1) translateY(50%);
+    }
+
+    &:checked {
+        box-shadow: $checkbox-box-shadow-checked;
+    }
+
+    &.visually-hidden {
+        width: 0;
+        height: 0;
+        border: 0;
+
+        &:after {
+            display: none;
+        }
+    }
+}
+
+
+input[type='radio'] {
+    position: relative;
+    width: $radio-button-size;
+    height: $radio-button-size;
+    border: $radio-button-border;
+    border-radius: 50%;
+    box-shadow: $radio-button-box-shadow;
+    transition: box-shadow 0.15s $radio-button-easing-function; /* [1] */
+    appearance: none;
+
+    &:before {
+        @include center;
+        display: block;
+        width: $radio-button-inner-size;
+        height: $radio-button-inner-size;
+        text-align: center;
+        background-color: $radio-button-inner-bg-color;
+        border-radius: 50%;
+        opacity: 0;
+        content: '';
+        transform: translate(-50%, -50%);
+        transition: transform 0.15s $radio-button-easing-function, opacity 0.15s $radio-button-easing-function;
+    }
+
+    &:checked:before {
+        opacity: 1;
+    }
+
+    &:checked {
+        box-shadow: $radio-button-box-shadow-checked;
+    }
+
+    &.visually-hidden {
+        width: 0;
+        height: 0;
+        border: 0;
+
+        &:before {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+/*------------------------------------*\
+    #OPTION-BUTTON
+\*------------------------------------*/
+
+$option-button-border-color: $gray !default;
+$option-button-active-border-color: $focus-ring-color !default;
+
+$option-button-size: 36px !default;
+
+
+.option-button {
+    display: inline-block;
+    margin: $spacing-unit;
+    margin-left: 0;
+    padding: $spacing-unit;
+    min-width: $option-button-size;
+    min-height: $option-button-size;
+    text-align: center;
+    border: 1px solid $option-button-border-color;
+    vertical-align: top;
+
+    & + & {
+        margin-left: $spacing-unit;
+    }
+}
+
+.option-button--active {
+    font-weight: bold;
+    border-color: $option-button-active-border-color;
+}
+
+.option-button--color {
+    padding: 0;
+}
+
+    .option-button__text {}
+
+    .option-button__image {
+        width: $option-button-size;
+    }
+
+    .option-button__swatch {
+        width: $option-button-size;
+        height: $option-button-size;
+    }

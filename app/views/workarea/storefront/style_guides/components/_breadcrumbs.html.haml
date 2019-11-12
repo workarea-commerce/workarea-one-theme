@@ -1,0 +1,13 @@
+#breadcrumbs.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'breadcrumbs')
+
+  %p Styles a set of breadcrumbs.
+  %p Note: breadcrumbs are hidden by default in Workarea OneTheme
+
+  .style-guide__example-block
+    .breadcrumbs
+      %p.breadcrumbs__node-group
+        %span.breadcrumbs__node= link_to 'Foo', '#'
+        %span.breadcrumbs__node= link_to 'Bar', '#'
+        %span.breadcrumbs__node= link_to 'Baz', '#'

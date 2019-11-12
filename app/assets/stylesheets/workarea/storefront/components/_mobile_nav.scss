@@ -1,0 +1,146 @@
+/*------------------------------------*\
+    #MOBILE-NAV
+\*------------------------------------*/
+
+$mobile-nav-bg-color: $background-color-component !default;
+$mobile-nav-search-bg-color: $background-secondary-color !default;
+$mobile-nav-overlay-bg-color: $overlay-shadow-color !default;
+
+// This value should match the height of .page-header__main at mobile to ensure alignment
+$mobile-nav-search-height: 53px !default;
+
+$mobile-nav-width:  300px !default;
+
+$mobile-nav-back-button-size: 24px !default;
+$mobile-nav-back-color: $header-icon-color !default;
+$mobile-nav-back-color-hover: $header-icon-color-hover !default;
+$mobile-nav-back-background-color: $mobile-nav-search-bg-color !default;
+
+$mobile-nav-item-border: 1px solid $border-color !default;
+
+$mobile-nav-link-color: $mobile-nav-links !default;
+$mobile-nav-link-font-size: 26px !default;
+$mobile-nav-link-font-family: $secondary-font-family !default;
+$mobile-nav-link-hover-bg-color: $background-color !default;
+
+.mobile-nav {
+    display: none;
+    transform: translateX(-100%);
+    transition: $drawer-transition;
+}
+
+.mobile-nav--active {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: index($components, mobile-nav);
+    width: $mobile-nav-width;
+    background: $mobile-nav-bg-color;
+    transform: translateX(0%);
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    top:    0;
+    right:  0;
+    bottom: 0;
+    left:   0;
+    z-index: index($components, mobile-nav) - 1;
+    background-color: $mobile-nav-overlay-bg-color;
+}
+
+    /**
+     * 1. Positioning context for mobile-nav__search-button
+     */
+    .mobile-nav__search {
+        padding: ($spacing-unit / 2) ($spacing-unit * 2);
+        height: $mobile-nav-search-height;
+        text-align: center;
+        background-color: $mobile-nav-search-bg-color;
+    }
+
+        .mobile-nav__search-form {
+            position: relative; /* [1] */
+        }
+
+            .mobile-nav__search-value {
+                display: inline-block;
+                width: 100%;
+                vertical-align: top;
+            }
+
+            .mobile-nav__search-button {
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                right: 0;
+                vertical-align: top;
+                transform: translateY(-50%);
+            }
+
+    .mobile-nav__close-button {}
+
+    .mobile-nav__back-button {
+        display: block;
+        padding: $spacing-unit ($spacing-unit * 2);
+        color: $mobile-nav-back-color;
+        font-size: $mobile-nav-back-button-size;
+        line-height: 1.55;
+        background-color: $mobile-nav-back-background-color;
+
+        &:hover {
+            color: $mobile-nav-back-color-hover;
+        }
+    }
+
+
+    /**
+     * 1. Should match padding-right for mobile-nav__link
+     */
+    .mobile-nav__menu {
+        @extend %list-reset;
+    }
+
+
+        .mobile-nav__item {
+            position: relative;
+            border-bottom: $mobile-nav-item-border;
+        }
+
+        .mobile-nav__item--has-children {
+            &:after {
+                position: absolute;
+                top: 50%;
+                right: $spacing-unit * 2; /* [1] */
+                content: '→';
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+            }
+        }
+
+            .mobile-nav__link {
+                display: block;
+                padding: $spacing-unit ($spacing-unit * 2);
+                color: $mobile-nav-link-color;
+                font-size: $mobile-nav-link-font-size;
+                font-family: $mobile-nav-link-font-family;
+                font-weight: bold;
+
+                &:hover {
+                    color: $mobile-nav-link-color;
+                    background-color: $mobile-nav-link-hover-bg-color;
+                }
+            }
+
+            .mobile-nav__link--selected {
+                font-weight: bold;
+            }
+
+            /**
+             * 1. injected via JavaScript
+             */
+            .mobile-nav__content { /* [1] */
+                @extend %list-reset;
+            }

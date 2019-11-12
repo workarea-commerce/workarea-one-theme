@@ -1,0 +1,57 @@
+/*------------------------------------*\
+    #COLOR-OPTIONS
+\*------------------------------------*/
+
+$color-options-outline: 2px solid $border-color !default;
+$color-options-selected-outline: 2px solid $primary-color !default;
+$color-options-color-size: 44px !default;
+$color-options-small-color-size: 24px !default;
+
+
+.color-options {}
+
+.color-options--small {}
+
+    .color-options__label {
+        margin: 0;
+    }
+
+    .color-options__color-group {
+        @extend %inline-list;
+    }
+
+        .color-options__color {
+            position: relative;
+            margin: 0 0 $spacing-unit;
+            width:  $color-options-color-size;
+            height: $color-options-color-size;
+            outline: $color-options-outline;
+            overflow: hidden;
+
+            & + & {
+                margin-left: $spacing-unit;
+            }
+
+            .color-options--small & {
+                margin-top:    $spacing-unit;
+                margin-bottom: 0;
+                width:  $color-options-small-color-size;
+                height: $color-options-small-color-size;
+            }
+        }
+
+        .color-options__color--selected {
+            outline: $color-options-selected-outline;
+        }
+
+            .color-options__color-button,
+            .color-options__color-button-image {
+                display: block;
+                position: absolute;
+                top:    0;
+                right:  0;
+                bottom: 0;
+                left:   0;
+            }
+
+            .color-options__color-name {}

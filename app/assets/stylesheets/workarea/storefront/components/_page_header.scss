@@ -1,0 +1,188 @@
+/*------------------------------------*\
+    #PAGE-HEADER
+\*------------------------------------*/
+
+$page-header-small-breakpoint: 450px !default;
+
+$page-header-logo-width:   140px !default;
+$page-header-logo-height:  37px !default;
+
+$page-header-background-color: $background-secondary-color !default;
+
+$page-header-cart-indicator-color: $primary-color !default;
+$page-header-cart-indicator-size: $spacing-unit !default;
+
+$page-header-promo-bg-color: $background-color !default;
+$page-header-promo-border: 1px solid $border-color;
+
+/**
+ * 1. clear z-index to allow drop shadow of drawers to cover page-header
+ */
+.page-header {
+    z-index: index($page-container, page-header);
+    background-color: $page-header-background-color;
+
+    .page-container--drawer-left-open & {
+        z-index: 0; /* [1] */
+    }
+}
+
+.page-header--checkout {}
+
+    /**
+    * 1. Positioning context to allow .utility-nav to slide out from behind the .page-header__main
+    */
+    .page-header__main {
+        position: relative; /* [1] */
+        z-index: index($page-header, page-header-main);
+        padding: $spacing-unit 0;
+        background-color: $background-secondary-color;
+
+        @include respond-to($medium-breakpoint) {
+            padding: ($spacing-unit * 2) 0;
+        }
+
+        .page-header--checkout & {
+            padding: ($spacing-unit * 2) 0;
+        }
+    }
+
+    .page-header__locale {}
+
+    .page-header__user-link {
+        padding: 0;
+
+        @include respond-to($page-header-small-breakpoint) {
+            padding: 0 $spacing-unit;
+        }
+
+        @include respond-to($medium-breakpoint) {
+            padding: 0 ($spacing-unit * 2);
+        }
+    }
+
+    .page-header__account-link {
+        @extend %link;
+        @extend %link--secondary;
+        display: block;
+        padding: $spacing-unit;
+    }
+
+
+    .page-header__logout-link {
+        @extend %link;
+        @extend %link--secondary;
+        display: block;
+        padding: $spacing-unit;
+    }
+
+
+    .page-header__cart-link {
+        position: relative;
+    }
+
+        .page-header__cart-icon {}
+
+        .page-header__cart-indicator {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: $page-header-cart-indicator-size;
+            height: $page-header-cart-indicator-size;
+            background-color: $page-header-cart-indicator-color;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.15s ease-in;
+
+            .page-header__cart-link--has-items & {
+                opacity: 1;
+            }
+        }
+
+    .page-header__mobile-nav-button {
+        display: inline-block;
+        width: 20%;
+        vertical-align: middle;
+
+        @include respond-to($medium-breakpoint) {
+            display: none;
+        }
+    }
+
+    .page-header__logo-container {
+        display: inline-block;
+        width: 80%;
+        vertical-align: middle;
+    }
+
+    .page-header__logo {
+        display: block;
+        margin: 0 auto;
+        width:  $page-header-logo-width;
+        height: $page-header-logo-height;
+
+        @include respond-to($medium-breakpoint) {
+            margin: 0;
+        }
+    }
+
+    /**
+     * 1. Positioning context for .page-header__search-button and
+     *    .value__error
+     * 2. Negative offset to create equal spacing between utility nav icons
+     */
+    .page-header__search {
+        display: none;
+        position: relative; /* [1] */
+        right: $spacing-unit * -1; /* [2] */
+        text-align: center;
+
+        @include respond-to($medium-breakpoint) {
+            display: inline-block;
+            text-align: right;
+        }
+    }
+
+        .page-header__search-form {}
+
+        .page-header__search-form--open {}
+
+            .page-header__search-value {
+                display: inline-block;
+                width: 0;
+                vertical-align: middle;
+                opacity: 0;
+                transition: opacity 0.15s ease-in, width 0.15s ease-in;
+
+                .page-header__search-form--open & {
+                    width: 200px;
+                    opacity: 1;
+                }
+
+                .value__error {
+                    position: absolute;
+                }
+            }
+
+            .page-header__search-button {
+                @extend %button-reset;
+                display: inline-block;
+                position: absolute;
+                top: $spacing-unit;
+                right: $spacing-unit;
+                cursor: pointer;
+            }
+
+
+    /**
+     * 1. make sure no content block can inject `p` tags that will break layout.
+     */
+    .page-header__promo {
+        z-index: index($page-header, header-promo);
+        padding: $spacing-unit 0;
+        text-align: center;
+        background-color: $page-header-promo-bg-color;
+        border-bottom: $page-header-promo-border;
+
+        p { margin: 0; } /* [1] */
+    }

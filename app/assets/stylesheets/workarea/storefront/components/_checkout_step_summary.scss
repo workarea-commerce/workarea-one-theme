@@ -1,0 +1,47 @@
+/*------------------------------------*\
+    #CHECKOUT-STEP-SUMMARY
+\*------------------------------------*/
+
+.checkout-step-summary {
+    @include checkout-section;
+}
+
+    /**
+    * 1. Positioning context for .checkout-step-summary__step-section-action
+    */
+    .checkout-step-summary__step {
+        position: relative; /* [1] */
+        margin-bottom: $spacing-unit * 2;
+    }
+
+    .checkout-step-summary__step--hidden-for-small {
+        display: none;
+
+        @include respond-to($medium-breakpoint) {
+            display: block;
+        }
+    }
+
+        .checkout-step-summary__step-heading {
+            @extend %heading;
+            @extend %heading--4;
+        }
+
+        .checkout-step-summary__section {
+            padding: $spacing-unit;
+        }
+
+            .checkout-step-summary__step-section-heading {
+                @extend %heading;
+                @extend %heading--5;
+            }
+
+            .checkout-step-summary__step-section-content {
+                margin-bottom: 0;
+            }
+
+        .checkout-step-summary__step-action {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }

@@ -1,0 +1,107 @@
+/*------------------------------------*\
+    #HAMBURGER
+\*------------------------------------*/
+
+$hamburger-color:                       $header-icon-color !default;
+$hamburger-width:                       18px !default;
+$hamburger-width-wide:                  22px !default;
+$hamburger-height:                      16px !default;
+$hamburger-height-wide:                 16px !default;
+$hamburger-top-margin:                  10px !default;
+$hamburger-line-thickness:              2px !default;
+$hamburger-line-thickness-wide:         3px !default;
+$hamburger-line-spacing:                -5px !default;
+$hamburger-line-spacing-wide:           -6px !default;
+$hamburger-animation-duration:          0.15s !default;
+
+
+.hamburger {
+    transition: top $hamburger-animation-duration ease-in-out,
+                bottom $hamburger-animation-duration ease-in-out;
+}
+
+
+    .hamburger__box {
+        display: inline-block;
+        position: relative;
+        margin-top: $hamburger-top-margin;
+        margin-left: $spacing-unit;
+        width: $hamburger-width;
+        height: $hamburger-height;
+        vertical-align: middle;
+
+        @include respond-to($wide-breakpoint) {
+            width: $hamburger-width-wide;
+            height: $hamburger-height-wide;
+        }
+    }
+
+    .hamburger__inner,
+    .hamburger__inner:before,
+    .hamburger__inner:after {
+        position: absolute;
+        width: $hamburger-width;
+        height: $hamburger-line-thickness;
+        background-color: $hamburger-color;
+        border-radius: $hamburger-line-thickness;
+        transition: transform $hamburger-animation-duration ease;
+
+        @include respond-to($wide-breakpoint) {
+            width: $hamburger-width-wide;
+            height: $hamburger-line-thickness-wide;
+        }
+    }
+
+    /**
+     * 1. targets the hamburger__inner on hamburger hover
+     * only if hamburger is inactive
+     */
+    .hamburger__inner {
+        display: block;
+        top: 50%;
+        margin-top: -2px;
+        transition-duration: 0.3s;
+        transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+        &:before,
+        &:after {
+            display: block;
+            content: '';
+        }
+
+        &:before {
+            top: $hamburger-line-spacing;
+            transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in;
+
+            @include respond-to($wide-breakpoint) {
+                top: $hamburger-line-spacing-wide;
+            }
+        }
+
+        &:after {
+            bottom: $hamburger-line-spacing;
+            transition: bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+            @include respond-to($wide-breakpoint) {
+                bottom: $hamburger-line-spacing-wide;
+            }
+        }
+
+        .page-container--drawer-left-open & {
+            transform: rotate(225deg);
+            transition-delay: 0.14s;
+            transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+            &:before {
+                top: 0;
+                transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out;
+                opacity: 0;
+            }
+
+            &:after {
+                bottom: 0;
+                transform: rotate(-90deg);
+                transition: bottom 0.1s ease-out, transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1);
+            }
+        }
+    }

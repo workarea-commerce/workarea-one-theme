@@ -1,0 +1,123 @@
+/*------------------------------------*\
+    #SIZE-OPTIONS
+\*------------------------------------*/
+
+$size-options-error-color:                $black !default;
+$size-options-error-bg-color:             $red !default;
+$size-options-color:                      $font-color !default;
+$size-options-selected-color:             $input-secondary-color !default;
+$size-options-border-color:               $link-color !default;
+$size-options-selected-background-color:  $primary-color !default;
+$size-options-limited-outline-color:      lighten($red, 25%) !default;
+$size-options-backordered-outline-color:  $red !default;
+$size-options-focused-outline-color:      $primary-color !default;
+
+$size-options-unavailable-opacity:  $primary-color !default;
+$size-options-message-shadow:       0 0 8px $overlay-shadow-color !default;
+
+
+.size-options {}
+
+    .size-options__size-header {}
+
+        .size-options__label {
+            display: inline;
+            margin: 0;
+        }
+
+        .size-options__size-guide {
+            display: inline;
+        }
+
+    /**
+     * 1. positioning context for error message
+     */
+
+    .size-options__size-group {
+        @extend %inline-list;
+        position: relative; /* [1] */
+    }
+
+        .size-options__size {
+            margin: 0 $spacing-unit $spacing-unit 0;
+
+            /**
+             * Extend `.value__error {}` in _value.scss.
+             */
+
+            .value__error {
+                position: absolute;
+                bottom: 100%;
+                left:   0;
+                padding: 0 ($spacing-unit / 2);
+                color: $size-options-error-color;
+                background: $size-options-error-bg-color;
+                box-shadow: $size-options-message-shadow;
+            }
+        }
+
+            .size-options__size-button {
+                margin: 0;
+            }
+
+                .size-options__size-input {
+                    vertical-align: top;
+
+                    .js & {
+                        @extend %visually-hidden;
+                    }
+                }
+
+                /**
+                 * 1. vertically centers label value
+                 */
+
+                .size-options__size-label {
+                    display: inline-block;
+                    padding: 12px 0 0; /* [1] */
+                    width:  44px;
+                    height: 44px;
+                    color: $size-options-color;
+                    text-align: center;
+                    border: 1px solid $size-options-border-color;
+                    vertical-align: top;
+                    cursor: pointer;
+                }
+
+                .size-options__size-label--unavailable {
+                    opacity: $size-options-unavailable-opacity;
+                    cursor: not-allowed;
+                }
+
+                .size-options__size-label--selected {
+                    color: $size-options-selected-color;
+                    background-color: $size-options-selected-background-color;
+                }
+
+                .size-options__size-label--limited {
+                    outline: 1px dotted $size-options-limited-outline-color;
+                }
+
+                .size-options__size-label--backordered {
+                    outline: 1px dashed $size-options-backordered-outline-color;
+                }
+
+                .size-options__size-label--focused {
+                    outline: 1px solid $size-options-focused-outline-color;
+                }
+
+            .size-options__size-messages {
+                display: none;
+
+                .size-options__size:hover & {
+                    display: block;
+                    position: absolute;
+                    bottom: 100%;
+                    left:   0;
+                    box-shadow: $size-options-message-shadow;
+                }
+            }
+
+                .size-options__size-message {
+                    padding: 0 ($spacing-unit / 2);
+                }

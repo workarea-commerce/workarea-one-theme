@@ -1,0 +1,39 @@
+/*------------------------------------*\
+    #PAGE-SUB-FOOTER
+\*------------------------------------*/
+
+$page-sub-footer-background-color: $background-secondary-color !default;
+$page-sub-footer-copyright-opacity: 0.6 !default;
+$page-sub-footer-copyright-font-size: 11px !default;
+
+
+.page-sub-footer {
+    padding: $spacing-unit;
+    color: $page-footer-color;
+    background-color: $page-footer-background-color;
+    border-top: 1px solid $border-color;
+}
+
+    .page-sub-footer__copyright {
+        margin: 0;
+        font-size: $page-sub-footer-copyright-font-size;
+        text-align: center;
+        opacity: $page-sub-footer-copyright-opacity;
+
+        @include respond-to($medium-breakpoint) {
+            text-align: left;
+        }
+    }
+
+    .page-sub-footer__payment-icons {
+        margin: $spacing-unit;
+        text-align: center;
+
+        @include respond-to($medium-breakpoint) {
+            text-align: right;
+        }
+
+        .payment-icon {
+            margin: 0 $spacing-unit;
+        }
+    }

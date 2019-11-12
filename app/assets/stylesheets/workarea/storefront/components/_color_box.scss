@@ -1,0 +1,48 @@
+/*------------------------------------*\
+    #COLOR-BOX
+\*------------------------------------*/
+
+$color-box-size: 100px !default;
+$color-box-outline: 1px solid $black !default;
+
+
+.color-box {
+    @extend %style-guide-bg-grid;
+    display: block;
+    width: $color-box-size;
+}
+
+    .color-box__swatch {
+        width: $color-box-size;
+        height: $color-box-size;
+        outline: $color-box-outline;
+    }
+
+    .color-box__swatch--focus-ring-color { background: $focus-ring-color; }
+    .color-box__swatch--primary-color { background: $primary-color; }
+    .color-box__swatch--primary-color-light { background: $primary-color-light; }
+    .color-box__swatch--primary-color-dark { background: $primary-color-dark; }
+    .color-box__swatch--background-color { background: $background-color; }
+    .color-box__swatch--background-color-component { background: $background-color-component; }
+    .color-box__swatch--background-secondary-color { background: $background-secondary-color; }
+    .color-box__swatch--border-color { background: $border-color; }
+    .color-box__swatch--highlight-color { background: $highlight-color; }
+    .color-box__swatch--font-color { background: $font-color; }
+    .color-box__swatch--heading-color { background: $heading-color; }
+    .color-box__swatch--product-name-color { background: $product-name-color; }
+    .color-box__swatch--header-icon-color { background: $header-icon-color; }
+    .color-box__swatch--utility-nav-background-color { background: $utility-nav-background-color; }
+    .color-box__swatch--primary-nav-links { background: $primary-nav-links; }
+    .color-box__swatch--primary-nav-dropdown-links { background: $primary-nav-dropdown-links; }
+    .color-box__swatch--mobile-nav-links { background: $mobile-nav-links; }
+    .color-box__swatch--footer-text { background: $footer-text; }
+    .color-box__swatch--link-color { background: $link-color; }
+    .color-box__swatch--link-color-hover { background: $link-color-hover; }
+    .color-box__swatch--link-secondary-color { background: $link-secondary-color; }
+    .color-box__swatch--input-color { background: $input-color; }
+    .color-box__swatch--input-background-color { background: $input-background-color; }
+    .color-box__swatch--input-secondary-color { background: $input-secondary-color; }
+    .color-box__swatch--input-secondary-bg-color { background: $input-secondary-bg-color; }
+    .color-box__swatch--overlay-shadow-color { background: $overlay-shadow-color; }
+
+    .color-box__swatch-name {}

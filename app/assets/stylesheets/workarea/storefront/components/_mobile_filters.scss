@@ -1,0 +1,42 @@
+/*------------------------------------*\
+    #MOBILE-FILTERS
+\*------------------------------------*/
+
+$mobile-filters-content-width: 300px !default;
+$mobile-filters-overlay-bg-color: $overlay-shadow-color !default;
+
+.mobile-filters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $mobile-filters-content-width;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: $drawer-transition;
+
+    .admin-toolbar ~ .page-container & {
+        top: 64px;
+    }
+}
+
+.mobile-filters--is-open {
+    z-index: index($components, result-filters);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+.mobile-filters-overlay {
+    position: fixed;
+    top:    0;
+    right:  0;
+    bottom: 0;
+    left:   0;
+    z-index: index($components, result-filters) - 1;
+    background-color: $mobile-filters-overlay-bg-color;
+}
+
+    .mobile-filters__content {}

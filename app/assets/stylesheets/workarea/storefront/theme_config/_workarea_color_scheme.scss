@@ -1,0 +1,105 @@
+/*------------------------------------*\
+    #WORKAREA-COLOR-SCHEME
+\*------------------------------------*/
+/**
+ * Color Variables
+ *
+ * These variables should always be aliased as Functional Variables at
+ * the bottom of this file.
+ */
+
+$blue:                              #3366cc !default;
+$yellow:                            #fdcc5d !default;
+$red:                               #ee283b !default;
+$green:                             #19c06a !default;
+
+$white:                             #ffffff !default;
+$gray:                              #666666 !default;
+$black:                             #000000 !default;
+
+$black-alpha-15:                    rgba($black, 0.15) !default;
+$black-alpha-50:                    rgba($black, 0.50) !default;
+
+$white-alpha-50:                    rgba($white, 0.50) !default;
+
+$transparent:                       transparent !default;
+
+/**
+ * Theme colors
+ */
+
+$off-black: #30354a !default;
+$blue: #0060ff !default;
+$alt-blue: #011eff !default;
+$lighter-gray: #f6f6f6 !default;
+$light-gray: #c5c5c5 !default;
+$gray: #999999 !default;
+$dark-gray: #666666 !default;
+
+// TODO: Figure out a better way to handle this. Preferred breaking BEM to doing more gross scss.erb dynamic imports
+.color-box__swatch--off-black { background: $off-black; }
+.color-box__swatch--blue { background: $blue; }
+.color-box__swatch--alt-blue { background: $alt-blue; }
+.color-box__swatch--gray { background: $gray; }
+.color-box__swatch--light-gray { background: $light-gray; }
+.color-box__swatch--dark-gray { background: $dark-gray; }
+.color-box__swatch--lighter-gray { background: $lighter-gray; }
+
+
+/**
+ * Global Functional Color Variables
+ * These variables should be used at the top of the Component SCSS that they
+ * belong to.
+ *
+ * This method helps aid the quick reskinning of Components.
+ */
+
+$primary-color: $blue !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$background-color: $lighter-gray !default;
+$background-color-component: $white !default;
+$background-secondary-color: $white !default;
+
+$border-color: $light-gray !default;
+$primary-nav-border-color: $border-color !default;
+$highlight-color: $background-color !default;
+
+$font-color: $off-black !default;
+$heading-color: $off-black !default;
+$heading-color-secondary: $off-black !default;
+$product-name-color: $off-black !default;
+
+$header-icon-color: $dark-gray !default;
+$header-icon-color-hover: $primary-color !default;
+$utility-nav-background-color: $white !default;
+
+$primary-nav-background-color: $background-secondary-color !default;
+$primary-nav-border-color: $off-black-light !default;
+$primary-nav-links: $off-black !default;
+$primary-nav-dropdown-links: $off-black !default;
+$mobile-nav-links: $black !default;
+
+$footer-text: $off-black !default;
+
+$link-color: $primary-color !default;
+$link-color-hover: $primary-color-dark !default;
+$link-secondary-color: $primary-nav-links !default;
+$link-secondary-color-hover: $primary-nav-links !default;
+$button-text-color: $white !default;
+
+$label-color: $dark-gray !default;
+$input-color: $dark-gray !default;
+$input-background-color: $white !default;
+$input-hover-border-color: darken($border-color, 35%) !default;
+$input-secondary-color: $off-black !default;
+$input-secondary-bg-color: $lighter-gray !default;
+$input-invalid-color: $red !default;
+$input-required-color: $red !default;
+
+$overlay-shadow-color: rgba($black, 0.1) !default;
+
+$focus-ring-color: $blue !default;
+
+$ui-dialog-titlebar-bg-color: $light-gray !default;

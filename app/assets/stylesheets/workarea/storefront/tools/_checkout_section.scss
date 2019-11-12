@@ -1,0 +1,12 @@
+/*------------------------------------*\
+    #CHECKOUT-SECTION
+\*------------------------------------*/
+
+$checkout-section-padding: $spacing-unit * 2 !default;
+$checkout-section-background-color: $background-color-component !default;
+
+
+@mixin checkout-section {
+    padding: $checkout-section-padding;
+    background-color: $checkout-section-background-color;
+}

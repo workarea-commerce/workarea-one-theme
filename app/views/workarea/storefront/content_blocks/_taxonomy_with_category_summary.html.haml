@@ -1,0 +1,26 @@
+.taxonomy-content-block.taxonomy-content-block--with-products
+  .taxonomy-content-block__container{ class: ('taxonomy-content-block__container--without-products' unless view_model.products.present? )}
+    - if view_model.data[:header].present?
+      %span.taxonomy-content-block__menu-heading= view_model.data[:header]
+
+    %ul.taxonomy-content-block__menu
+      - if view_model.show_starting_taxon?
+        %li.taxonomy-content-block__menu-item.taxonomy-content-block__menu-item--start
+          - if view_model.starting_taxon.placeholder?
+            = view_model.starting_taxon.name
+          - else
+            = link_to view_model.starting_taxon.name, storefront_path_for(view_model.starting_taxon), data: { analytics: primary_navigation_analytics_data(view_model.starting_taxon).to_json }, class: 'taxonomy-content-block__menu-link'
+      - view_model.taxons.each do |taxon|
+        %li.taxonomy-content-block__menu-item
+          - if taxon.placeholder?
+            = taxon.name
+          - else
+            = link_to taxon.name, storefront_path_for(taxon), data: { analytics: primary_navigation_analytics_data(taxon).to_json }, class: 'taxonomy-content-block__menu-link'
+
+  - if view_model.products.present?
+    .taxonomy-content-block__products
+      .grid.grid--flush{ data: { analytics: product_list_analytics_data("Custom product list").to_json } }
+        - view_model.products.each do |product|
+          .grid__cell.grid__cell--50{ class: view_model.product_width_class }
+            %div.product-summary.product-summary--small{ itemscope: true, itemtype: 'http://schema.org/Product' }
+              = render 'workarea/storefront/products/summary', product: product

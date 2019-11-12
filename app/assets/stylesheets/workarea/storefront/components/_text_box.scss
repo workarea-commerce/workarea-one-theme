@@ -1,0 +1,57 @@
+/*------------------------------------*\
+    #TEXT-BOX
+\*------------------------------------*/
+
+$text-box-border-color:       $border-color !default;
+$text-box-hover-border-color: $input-hover-border-color !default;
+$text-box-border:             1px solid $text-box-border-color !default;
+$text-box-border-radius:      $border-radius !default;
+
+$text-box-color:              $input-color !default;
+
+$text-box-secondary-color: $input-secondary-color !default;
+$text-box-secondary-bg-color: $input-secondary-bg-color !default;
+
+$text-box-width:              100% !default;
+$text-box-x-small-width:       62px !default;
+$text-box-small-width:         96px !default;
+$text-box-wide-width:         256px !default;
+$text-box-multi-line-height:  168px !default;
+
+$text-box-invalid-border-color: $input-invalid-color !default;
+
+.text-box {
+    padding: $spacing-unit;
+    width: $text-box-width;
+    color: $text-box-color;
+    border: $text-box-border;
+    border-radius: $text-box-border-radius;
+
+    &:focus {
+        @include focus-ring;
+    }
+
+    &:hover {
+        border-color: $text-box-hover-border-color;
+    }
+
+    .property--invalid & {
+        border-color: $text-box-invalid-border-color;
+    }
+}
+
+.text-box--x-small    { width:  $text-box-x-small-width;     }
+.text-box--small      { width:  $text-box-small-width;       }
+.text-box--wide       { width:  $text-box-wide-width;        }
+.text-box--multi-line { height: $text-box-multi-line-height; }
+
+.text-box--secondary {
+    color: $text-box-secondary-color;
+    background-color: $text-box-secondary-bg-color;
+    border: 0;
+    border-radius: 0;
+
+    &::placeholder {
+        color: $text-box-secondary-color;
+    }
+}

@@ -1,0 +1,22 @@
+/*------------------------------------*\
+    #SHARE-BUTTONS
+\*------------------------------------*/
+
+.share-buttons {
+    @extend %inline-list;
+    margin: $spacing-unit 0;
+    padding: $spacing-unit 0;
+    text-align: right;
+    border-top: 1px solid $border-color;
+}
+
+    .share-buttons__item {
+        margin: 0 ($spacing-unit * 2);
+        vertical-align: middle;
+    }
+
+        .share-buttons__title {
+            margin-bottom: 0;
+        }
+
+        .share-buttons__button {}

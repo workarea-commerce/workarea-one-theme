@@ -1,0 +1,32 @@
+/*------------------------------------*\
+    #TABLES
+\*------------------------------------*/
+
+$table-cell-border-color: $transparent !default;
+
+$table-header-color: $heading-color !default;
+$table-header-bg-color: $transparent !default;
+$table-data-bg-color: $transparent !default;
+
+
+table {
+    margin-bottom: $vertical-margin;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    th, td {
+        padding: $spacing-unit;
+        text-align: left;
+        border: 1px solid $table-cell-border-color;
+        vertical-align: baseline;
+    }
+
+    th {
+        color: $table-header-color;
+        background: $table-header-bg-color;
+    }
+
+    td {
+        background: $table-data-bg-color;
+    }

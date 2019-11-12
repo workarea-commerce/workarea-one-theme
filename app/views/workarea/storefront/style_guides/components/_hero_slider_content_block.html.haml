@@ -1,0 +1,46 @@
+#hero-slider-content-block.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'hero_slider_content_block')
+
+  %p Displays a series of up to 5 slides in a carousel with image, heading, and subheading.
+
+  %p Hero slider
+  .style-guide__example-block
+    .hero-slider-content-block{ data: { slick_slider: '{"options":{"slidesToShow":1,"slidesToScroll":1,"autoplay":false,"dots":true,"arrows":true,"centerMode":false,"pauseOnHover":true,"pauseOnDotsHover":true,"pauseOnFocus":true,"mobileFirst":true,"responsive":[{"breakpoint":959,"settings":{"autoplay":false,"autoplaySpeed":0.0}}]},"stopOnInteraction":true}'  } }
+      .hero-slider-content-block__slide
+        = image_tag 'workarea/storefront/style_guide_light_banner.png', class: 'hero-slider-content-block__slide-image', alt: 'Descriptive alt text'
+        .hero-slider-content-block__slide-content
+          .hero-slider-content-block__slide-heading Heading slide 1
+          .hero-slider-content-block__slide-sub-heading Sub-heading slide 1
+      .hero-slider-content-block__slide
+        = image_tag 'workarea/storefront/style_guide_light_banner.png', class: 'hero-slider-content-block__slide-image', alt: 'Descriptive alt text'
+        .hero-slider-content-block__slide-content
+          .hero-slider-content-block__slide-heading Heading slide 2
+          .hero-slider-content-block__slide-sub-heading Sub-heading slide 2
+      .hero-slider-content-block__slide
+        = image_tag 'workarea/storefront/style_guide_light_banner.png', class: 'hero-slider-content-block__slide-image', alt: 'Descriptive alt text'
+        .hero-slider-content-block__slide-content
+          .hero-slider-content-block__slide-heading Heading slide 3
+          .hero-slider-content-block__slide-sub-heading Sub-heading slide 3
+
+  %p Hero slider - full bleed mode
+  .style-guide__example-block
+    .hero-slider-content-block.hero-slider-content-block--full-bleed{ data: { slick_slider: '{"options":{"slidesToShow":1,"slidesToScroll":1,"autoplay":false,"dots":true,"arrows":true,"centerMode":false,"pauseOnHover":true,"pauseOnDotsHover":true,"pauseOnFocus":true,"mobileFirst":true,"responsive":[{"breakpoint":959,"settings":{"autoplay":false,"autoplaySpeed":0.0}}]},"stopOnInteraction":true}'  } }
+      .hero-slider-content-block__slide
+        = image_tag 'workarea/storefront/style_guide_light_banner.png', class: 'hero-slider-content-block__slide-image', alt: 'Descriptive alt text'
+        .content-wrapper
+          .hero-slider-content-block__slide-content
+            .hero-slider-content-block__slide-heading Heading slide 1
+            .hero-slider-content-block__slide-sub-heading Sub-heading slide 1
+      .hero-slider-content-block__slide
+        = image_tag 'workarea/storefront/style_guide_light_banner.png', class: 'hero-slider-content-block__slide-image', alt: 'Descriptive alt text'
+        .content-wrapper
+          .hero-slider-content-block__slide-content
+            .hero-slider-content-block__slide-heading Heading slide 2
+            .hero-slider-content-block__slide-sub-heading Sub-heading slide 2
+      .hero-slider-content-block__slide
+        = image_tag 'workarea/storefront/style_guide_light_banner.png', class: 'hero-slider-content-block__slide-image', alt: 'Descriptive alt text'
+        .content-wrapper
+          .hero-slider-content-block__slide-content
+            .hero-slider-content-block__slide-heading Heading slide 3
+            .hero-slider-content-block__slide-sub-heading Sub-heading slide 3

@@ -1,0 +1,11 @@
+module Workarea
+  decorate Storefront::ProductViewModel, with: :one_theme do
+    def alt_images_class
+      "grid__cell--#{alt_image_percentage_width}"
+    end
+
+    def alt_image_percentage_width
+      100 / images.length
+    end
+  end
+end

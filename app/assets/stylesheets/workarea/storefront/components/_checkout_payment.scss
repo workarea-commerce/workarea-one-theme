@@ -1,0 +1,58 @@
+/*------------------------------------*\
+    #CHECKOUT-PAYMENT
+\*------------------------------------*/
+
+$checkout-payment-method-selected-color:  $highlight-color !default;
+
+
+.checkout-payment {}
+
+    .checkout-payment__section {
+        @include checkout-section;
+        margin-bottom: $vertical-margin;
+    }
+
+        .checkout-payment__heading {
+            @extend %heading;
+            @extend %heading--4;
+        }
+
+    .checkout-payment__secondary {}
+
+        .checkout-payment__secondary-method {
+            margin-bottom: $spacing-unit * 2;
+        }
+
+    .checkout-payment__primary-payment {}
+
+        .checkout-payment__primary-method-group {
+            margin-bottom: $vertical-margin;
+        }
+
+            .checkout-payment__primary-method {
+                padding: ($spacing-unit * 2);
+            }
+
+                .checkout-payment__primary-method-description {}
+
+                .checkout-payment__primary-method-edit {
+                    .js & {
+                        display: none;
+                    }
+
+                    .checkout-payment__primary-method--selected & {
+                        .js & {
+                            display: block;
+                        }
+                    }
+                }
+
+            .checkout-payment__primary-method--selected {
+                background: $checkout-payment-method-selected-color;
+            }
+
+    .checkout-payment__cart-items {}
+
+    .checkout-payment__place-order {
+        margin-bottom: 0;
+    }

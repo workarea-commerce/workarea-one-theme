@@ -1,0 +1,47 @@
+/*------------------------------------*\
+    #CHECKOUT-PROGRESS
+\*------------------------------------*/
+
+$checkout-progress-color:            $font-color !default;
+$checkout-progress-active-color:     $font-color !default;
+$checkout-progress-completed-color:  darken($font-color, 50) !default;
+
+
+.checkout-progress {
+    @extend %list-reset;
+    margin: ($spacing-unit * 2) 0 ($spacing-unit * 3);
+    text-align: center;
+
+    @include respond-to($medium-breakpoint) {
+        text-align: left;
+    }
+}
+
+    /**
+     * 1. a `.checkout-progress__step` is considered "completed" until:
+     * 2. it becomes activated, or
+     * 3. appears after the activated step
+     */
+    .checkout-progress__step {
+        padding: $spacing-unit / 2;
+        color: $checkout-progress-completed-color; /* [1] */
+
+        @include respond-to($medium-breakpoint) {
+            display: inline-block;
+            margin: 0 $spacing-unit;
+        }
+    }
+
+    .checkout-progress__step--active { /* [2] */
+        color: $checkout-progress-active-color;
+        font-weight: bold;
+
+        ~ .checkout-progress__step { /* [3] */
+            color: $checkout-progress-color;
+        }
+    }
+
+        /**
+         * 1. the link only appears within the "completed" state
+         */
+        .checkout-progress__link {} /* [1] */

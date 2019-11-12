@@ -1,0 +1,15 @@
+/*------------------------------------*\
+    #CHECKOUT-SHIPPING
+\*------------------------------------*/
+
+.checkout-shipping {}
+
+    .checkout-shipping__section {
+        @include checkout-section;
+        margin-bottom: $vertical-margin;
+    }
+
+        .checkout-shipping__heading {
+            @extend %heading;
+            @extend %heading--4;
+        }

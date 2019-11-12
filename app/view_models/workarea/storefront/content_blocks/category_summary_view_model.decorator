@@ -1,0 +1,21 @@
+module Workarea
+  decorate Storefront::ContentBlocks::CategorySummaryViewModel, with: :one_theme do
+    def image
+      find_asset(data[:image])
+    end
+
+    def title
+      data[:heading].presence || category.name
+    end
+
+    def call_to_action_text
+      data[:link_text] || t('workarea.storefront.content_blocks.category_summary.view_all')
+    end
+
+    def content_background_style
+      if data[:image].present?
+        "background-image: url('#{image.url}'); background-size: cover; background-position: center;"
+      end
+    end
+  end
+end

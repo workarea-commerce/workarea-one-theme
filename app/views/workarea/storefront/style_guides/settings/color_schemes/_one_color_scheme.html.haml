@@ -1,0 +1,7 @@
+.grid.grid--auto
+  - colors = %w(dark-gray gray light-gray off-black off-white burnt-orange dark-burnt-orange)
+  - colors.each do |color|
+    .grid__cell
+      .color-box
+        .color-box__swatch{ class: "color-box__swatch--#{color}" }
+        .color-box__swatch-name $#{color}

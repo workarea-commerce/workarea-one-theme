@@ -1,0 +1,46 @@
+#product-list-content-block.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'product_list_content_block')
+
+  %p A content block containing <code>.product-summary</code> components.
+
+  %p should provide a responsive layout for multiple <code>.product-summary</code> components:
+  .style-guide__example-block
+    .product-list-content-block
+      .grid.grid--flush
+        - (1..4).each do |i|
+          .grid__cell.grid__cell--50.grid__cell--25-at-medium
+            .product-summary.product-summary--small
+              .product-summary__media
+                .product-summary__image-wrapper
+                  = image_tag 'workarea/core/placeholder.png', size: '180x180', class: 'product-summary__image'
+              .product-summary__info
+                %span.product-summary__name Product Title #{i}
+
+  %p should support a heading:
+  .style-guide__example-block
+    .product-list-content-block
+      %h2.product-list-content-block__heading Product List Content Block
+      .grid.grid--flush
+        - (1..4).each do |i|
+          .grid__cell.grid__cell--50.grid__cell--25-at-medium
+            .product-summary.product-summary--small
+              .product-summary__media
+                .product-summary__image-wrapper
+                  = image_tag 'workarea/core/placeholder.png', size: '180x180', class: 'product-summary__image'
+              .product-summary__info
+                %span.product-summary__name Product Title #{i}
+
+  %p should initialize as a carousel if more than 4 products are present:
+  .style-guide__example-block
+    .product-list-content-block
+      %h2.product-list-content-block__heading Product List Content Block with 6 products
+      .grid.grid--flush{ data: { slick_slider: '{"options":{"slidesToShow":1,"slidesToScroll":1,"autoplay":false,"dots":false,"arrows":true,"centerMode":false,"pauseOnHover":true,"pauseOnDotsHover":true,"pauseOnFocus":true,"mobileFirst":true,"responsive":[{"breakpoint":759,"settings":{"slidesToShow":2}},{"breakpoint":959,"settings":{"slidesToShow":4,"autoplay":false,"autoplaySpeed":0.0}}]},"stopOnInteraction":true}' } }
+        - (1..6).each do |i|
+          .grid__cell.grid__cell--50.grid__cell--25-at-medium
+            .product-summary.product-summary--small
+              .product-summary__media
+                .product-summary__image-wrapper
+                  = image_tag 'workarea/core/placeholder.png', size: '180x180', class: 'product-summary__image'
+              .product-summary__info
+                %span.product-summary__name Product Title #{i}

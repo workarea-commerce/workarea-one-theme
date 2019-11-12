@@ -1,0 +1,94 @@
+/*------------------------------------*\
+    #PRODUCT-DETAILS
+\*------------------------------------*/
+
+$product-details-primary-image-max-width:         255px !default;
+$product-details-primary-image-max-width-medium:  360px !default;
+$product-details-primary-image-ratio:      2 / 3 !default;
+
+$product-details-alt-image-selected-outline-color:  $highlight-color !default;
+
+$product-details-form-border: 1px solid $border-color !default;
+
+
+/**
+ * 1. within a jQuery Dialog, set width since there is no
+ *    .product-details-container
+ */
+
+.product-details {
+    .ui-dialog & { /* [1] */
+        max-width: $dialog-content-max-width;
+    }
+}
+
+.product-details--generic {}
+.product-details--swatches {}
+.product-details--quickview {}
+
+
+    .product-details__name {
+        text-align: center;
+
+        @include respond-to($medium-breakpoint) {
+            text-align: left;
+        }
+    }
+
+        .product-details__heading {}
+
+        .product-details__id {}
+
+    .product-details__description {
+        display: none;
+
+        .ui-dialog & {
+            display: block;
+        }
+    }
+
+
+    .product-details__add-to-cart-form {
+        margin: ($spacing-unit * 2) 0;
+        padding: ($spacing-unit * 2) 0;
+        text-align: center;
+        border-top: $product-details-form-border;
+        border-bottom: $product-details-form-border;
+
+        @include respond-to($medium-breakpoint) {
+            text-align: left;
+        }
+    }
+
+        .product-details__quantity {
+            display: inline-block;
+        }
+
+        .product-details__add-to-cart-action {
+            margin-bottom: 0;
+
+            .product-details--swatches & {
+                vertical-align: middle;
+            }
+        }
+
+        .product-details__inventory-status {}
+
+        .product-details__unavailable {}
+
+    .product-details__full-details {
+        display: none;
+
+        .ui-dialog & {
+            display: block;
+        }
+    }
+
+    .product-details__media {
+        margin: 0 auto;
+        max-width: $product-details-primary-image-max-width;
+
+        @include respond-to($medium-breakpoint) {
+            max-width: $product-details-primary-image-max-width-medium;
+        }
+    }

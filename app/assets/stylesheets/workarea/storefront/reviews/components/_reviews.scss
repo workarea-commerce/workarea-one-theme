@@ -1,0 +1,66 @@
+/*------------------------------------*\
+    #REVIEWS
+\*------------------------------------*/
+
+$reviews-background-color: $background-color-component !default;
+
+
+.reviews {
+    margin-top: $spacing-unit * 2;
+    padding: $spacing-unit * 2;
+    background-color: $reviews-background-color;
+
+    @include respond-to($medium-breakpoint) {
+        padding: $spacing-unit * 5;
+    }
+}
+
+    .reviews__header {
+        padding-left: $spacing-unit * 2;
+        width: 100%;
+    }
+
+        .reviews__heading {
+            margin-bottom: 0;
+        }
+
+        .reviews__count {}
+
+        .reviews__write-action {
+            text-align: center;
+
+            @include respond-to($medium-breakpoint) {
+                margin: 0 $spacing-unit * 2;
+            }
+        }
+
+    .reviews__review-group {
+        margin: 0;
+        list-style: none;
+    }
+
+        .reviews__review {
+            padding: ($spacing-unit * 2) 0;
+            border-top: 1px solid $border-color;
+        }
+
+            .reviews__review-title {}
+
+            .reviews__review-body {}
+
+            .reviews__review-meta {
+                @extend %clearfix;
+            }
+
+                .reviews__review-author {
+                    margin: 0;
+                    float: left;
+                    line-height: 1;
+                }
+
+                .reviews__review-date {
+                    margin: 0 0 0 $spacing-unit;
+                    padding-left: $spacing-unit;
+                    float: left;
+                    line-height: 1;
+                }

@@ -1,0 +1,33 @@
+#taxonomy-with-products-content-block.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'taxonomy_with_products_content_block')
+
+  %p Displays a column of taxonomy with up to 4 manually selected products, similar to product list blocktype.
+
+  %p Taxonomy with products content block
+  .style-guide__example-block
+    .taxonomy-content-block.taxonomy-content-block--with-products
+      .taxonomy-content-block__container
+        %span.taxonomy-content-block__menu-heading Taxonomy Heading
+
+        %ul.taxonomy-content-block__menu
+          - (1..5).each do |i|
+            %li.taxonomy-content-block__menu-item
+              - if i.even?
+                Taxon #{i}
+              - else
+                = link_to "Taxon #{i}", '#', class: 'taxonomy-content-block__menu-link'
+
+      .taxonomy-content-block__products
+        .grid.grid--flush
+          - 2.times do
+            .grid__cell.grid__cell--50.grid__cell--25-at-medium
+              .product-summary
+                %p.product-summary__media
+                  = link_to('#', class: 'product-summary__media-link') do
+                    = image_tag('workarea/storefront/style_guide_product.jpg', alt: 'Product Name', class: 'product-summary__media-image')
+                .product-summary__info
+                  %p.product-summary__name= link_to('Product Name', '#')
+                  .product-prices.product-prices--summary
+                    %p.product-prices__price
+                      %span= number_to_currency(109.99)

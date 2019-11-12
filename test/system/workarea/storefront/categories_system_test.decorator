@@ -1,0 +1,100 @@
+require 'test_helper'
+
+module Workarea
+  decorate Storefront::CategoriesSystemTest, with: :one_theme do
+    def test_basic_category_setup
+      category = create_category
+      categorize_products(category)
+
+      visit storefront.category_path(category)
+
+      assert(page.has_content?('Integration Product 1'))
+      assert(page.has_content?('Integration Product 2'))
+      assert(page.has_content?('$10.00'))
+      assert(page.has_content?('$5.00'))
+
+      click_button 'Filter Results'
+      assert(page.has_content?('Medium (3)'))
+      assert(page.has_content?('Small (2)'))
+    end
+
+
+    def test_filtering_products
+      category = create_category
+      categorize_products(category)
+
+      visit storefront.category_path(category)
+
+      Capybara.match = :first
+
+      click_button 'Filter Results'
+      click_link '$10.00 - $19.99 (1)'
+
+      assert(page.has_content?('Integration Product 1'))
+      assert(page.has_no_content?('Integration Product 2'))
+
+      click_button 'Filter Results'
+      click_link "$10.00 - $19.99 #{t('workarea.storefront.products.remove_filter')}"
+
+      assert(page.has_content?('Integration Product 1'))
+      assert(page.has_content?('Integration Product 2'))
+
+      click_button 'Filter Results'
+      click_link 'Green (1)'
+
+      assert(page.has_content?('Integration Product 1'))
+      assert(page.has_no_content?('Integration Product 2'))
+
+      click_button 'Filter Results'
+      click_link "Green #{t('workarea.storefront.products.remove_filter')}"
+
+      assert(page.has_content?('Integration Product 1'))
+      assert(page.has_content?('Integration Product 2'))
+    end
+
+    def test_filtering_products_and_sorting
+      category = create_category
+      categorize_products(category)
+
+      visit storefront.category_path(category)
+
+      Capybara.match = :first
+      click_button 'Filter Results'
+      click_link '$10.00 - $19.99 (1)'
+
+      assert(page.has_content?('Integration Product 1'))
+      assert(page.has_no_content?('Integration Product 2'))
+
+      select(t('workarea.sorts.price_asc'), from: 'sort_top')
+
+      assert(page.has_content?('Integration Product 1'))
+      assert(page.has_no_content?('Integration Product 2'))
+    end
+
+    def test_custom_filters
+      category = create_category
+      categorize_products(category)
+
+      visit storefront.category_path(category)
+
+      click_button 'Filter Results'
+      assert(page.has_content?('Size'))
+      assert(page.has_content?('Medium (3)'))
+
+      assert(page.has_content?('$10.00 - $19.99 (1)'))
+
+      category.terms_facets = ['Color']
+      category.range_facets = { 'price' => [{ 'to' => 10 }, { 'from' => 10 }] }
+      category.save!
+
+      visit storefront.category_path(category)
+
+      assert(page.has_no_content?('Size'))
+      assert(page.has_no_content?('Medium (3)'))
+
+      click_button 'Filter Results'
+      assert(page.has_content?('Under $10.00 (2)'))
+      assert(page.has_content?('Over $10.00 (1)'))
+    end
+  end
+end

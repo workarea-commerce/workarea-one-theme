@@ -1,0 +1,23 @@
+require 'test_helper'
+
+module Workarea
+  decorate Storefront::ReviewSystemTest, with: :one_theme do
+    def test_showing_reviews_on_browse_page
+      skip("Review stars removed from product summary")
+      create_review(product_id: product.id, rating: 4)
+      category = create_category(product_ids: [product.id])
+
+      visit storefront.category_path(category)
+      assert(page.has_content?('4.0 out of 5 stars'))
+    end
+
+    def test_showing_reviews_on_search_results
+      skip("Review stars removed from product summary")
+      create_product(name: 'Another Test')
+      create_review(product_id: product.id, rating: 4)
+
+      visit storefront.search_path(q: 'test')
+      assert(page.has_content?('4.0 out of 5 stars'))
+    end
+  end
+end

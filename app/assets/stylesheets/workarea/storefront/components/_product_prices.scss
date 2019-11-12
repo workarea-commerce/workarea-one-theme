@@ -1,0 +1,45 @@
+/*------------------------------------*\
+    #PRODUCT-PRICES
+\*------------------------------------*/
+
+$product-price-details-font-size: 20px !default;
+$product-price-original-font-size: 0.8em !default;
+$product-price-color: $font-color !default;
+$product-price-original-color: $primary-color !default;
+
+.product-prices {}
+
+.product-prices--summary {}
+
+.product-prices--details {
+    margin-bottom: $vertical-margin;
+    font-size: $product-price-details-font-size;
+    text-align: center;
+
+    @include respond-to($medium-breakpoint) {
+        text-align: left;
+    }
+}
+
+    .product-prices__price {
+        display: block;
+        margin: 0;
+        color: $product-price-color;
+        white-space: nowrap;
+
+        .product-prices--details & {
+            display: inline;
+            white-space: normal;
+        }
+    }
+
+    .product-prices__price--sale {}
+
+    .product-prices__price--original {
+        color: $product-price-original-color;
+        font-size: $product-price-original-font-size;
+
+        .product-prices--details & {
+            display: block;
+        }
+    }

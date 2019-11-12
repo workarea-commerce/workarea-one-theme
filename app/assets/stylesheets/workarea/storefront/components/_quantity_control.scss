@@ -1,0 +1,77 @@
+/*------------------------------------*\
+    #QUANTITY-CONTROL
+\*------------------------------------*/
+
+$quantity-input-color: $font-color !default;
+$quantity-control-background-color: $background-color !default;
+$quantity-control-width-mobile: 50px !default;
+$quantity-control-width: 100px !default;
+
+$quantity-control-button-border: 1px solid $border-color !default;
+
+/**
+ * 1. Remove arrows from number field styles on non-mobile devices
+ * 2. Some margins are still there even though it's hidden
+ */
+
+.quantity-control {
+    position: relative;
+
+    /**
+     * Extend .value__error from _value.scss
+     */
+
+    .value__error {
+        position: absolute;
+        width: 300px;
+
+        .ui-dialog & {
+            width: 100px;
+        }
+    }
+}
+
+    .quantity-control__input {
+        padding: $spacing-unit;
+        width: $quantity-control-width-mobile;
+        color: $quantity-input-color;
+        text-align: center;
+        background-color: $quantity-control-background-color;
+
+        /* [1] */
+        @include respond-to($wide-breakpoint) {
+            width: $quantity-control-width;
+            appearance: textfield;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                margin: 0; /* [2] */
+                appearance: none;
+            }
+        }
+    }
+
+    .quantity-control__button {
+        display: none;
+
+        @include respond-to($wide-breakpoint) {
+            @include center($to: vertical);
+            display: inline-block;
+            padding: $spacing-unit 12px;
+            height: 100%;
+            color: $quantity-input-color;
+            background: $transparent;
+            border: 0;
+            cursor: pointer;
+        }
+    }
+
+    .quantity-control__increment {
+        right: 0;
+        border-left: $quantity-control-button-border;
+    }
+
+    .quantity-control__decrement {
+        left: 0;
+        border-right: $quantity-control-button-border;
+    }

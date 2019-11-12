@@ -1,0 +1,22 @@
+.product-media
+  - if product.images.length == 0
+    .product-details__primary-image
+      = link_to(product_image_url(product.primary_image, :zoom), target: '_blank', rel: 'noopener', class: 'product-details__primary-image-link', data: { dialog_button: '' }) do
+        = image_tag product_image_url(product.primary_image, :detail), alt: 'View Larger Image', itemprop: 'image', class: 'product-details__primary-image-link-image'
+        
+  - else
+    .product-media__primary-image
+      = link_to(product_image_url(product.primary_image, :zoom), target: '_blank', rel: 'noopener', class: 'product-media__primary-image-link', data: { dialog_button: '' }) do
+        %picture
+          %source{ srcset: product_image_url(product.primary_image, :detail), product_image_url(product.primary_image, :detail) => '1x', product_image_url(product.primary_image, :detail_retina) => '2x', media: "(min-width: #{Workarea.config.storefront_break_points[:medium]}px)" }
+          %source{ srcset: product_image_url(product.primary_image, :detail_mobile), product_image_url(product.primary_image, :detail_mobile) => '1x', product_image_url(product.primary_image, :detail_mobile_retina) => '2x' }
+          = image_tag product_image_url(product.primary_image, :detail), alt: t('workarea.storefront.products.image_alt_attribute', name: product.name), itemprop: 'image', class: 'product-media__primary-image-link-image'
+
+    - if product.images.length > 1
+      .product-media__alt-images
+        .grid.grid--center
+          - product.images.each_with_index do |image, index|
+            .grid__cell{ class: product.alt_images_class }
+              .product-media__alt-image
+                - button_class = index == 0 ? 'product-media__alt-image-link product-media__alt-image-link--selected' : 'product-media__alt-image-link'
+                = link_to(image_tag(product_image_url(image, :small_thumb), alt: t('workarea.storefront.products.zoom')), product_image_url(image, :zoom), class: button_class, target: '_blank', rel: 'noopener', data: { alternate_image_button: { src: product_image_url(image, :detail) }.to_json })

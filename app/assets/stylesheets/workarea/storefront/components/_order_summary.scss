@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    #ORDER-SUMMARY
+\*------------------------------------*/
+
+$order-summary-data-section-background-color:  $background-color-component !default;
+
+.order-summary {}
+
+    .order-summary__section {
+        margin-bottom: $vertical-margin;
+    }
+
+    .order-summary__data {}
+
+        .order-summary__data-section {
+            margin-bottom: $vertical-margin;
+            padding: $spacing-unit * 2;
+            background-color: $order-summary-data-section-background-color;
+        }

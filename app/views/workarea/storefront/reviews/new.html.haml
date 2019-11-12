@@ -1,0 +1,72 @@
+- @title = t('workarea.storefront.reviews.write_a_review_title', name: @product.browser_title)
+
+.write-review.view
+  %h1.heading.heading--3= t('workarea.storefront.reviews.write_a_review_title', name: @product.browser_title)
+
+  - unless request.get?
+    - if @create_review.errors.any?
+      - @create_review.errors.full_messages.each do |message|
+        = render_message 'error', message, data: { analytics: validation_error_analytics_data('review').to_json }
+
+  = form_tag create_product_review_path(@product), method: 'post', id: 'review_form', data: { product_review_ajax_submit: '' } do
+    = hidden_field_tag 'review[product_id]', @product.id
+
+    - if display_purchase_requirement_message
+      %span.write-review__purchase-requirement= t('workarea.storefront.reviews.purchase_requirement')
+
+    - if @review.requires_public_info?
+      .grid
+        .grid__cell.grid__cell--50-at-medium
+          .property
+            = label_tag 'review[first_name]', nil, class: 'property__name' do
+              %span.property__requirement.property__requirement--required= t('workarea.storefront.forms.required')
+              %span.property__text= t('workarea.storefront.users.first_name')
+            .value
+              = text_field_tag 'review[first_name]', @review.first_name, class: 'text-box', required: true
+              .value__note= t('workarea.storefront.reviews.first_name_field_note')
+
+        .grid__cell.grid__cell--50-at-medium
+          .property
+            = label_tag 'review[last_name]', nil, class: 'property__name' do
+              %span.property__requirement.property__requirement--required= t('workarea.storefront.forms.required')
+              %span.property__text= t('workarea.storefront.users.last_name')
+            .value
+              = text_field_tag 'review[last_name]', @review.last_name, class: 'text-box', required: true
+              .value__note= t('workarea.storefront.reviews.last_name_field_note')
+
+    - if @review.anonymous?
+      .property
+        = label_tag 'review[email]', nil, class: 'property__name' do
+          %span.property__text= t('workarea.storefront.users.email')
+          %span.property__requirement.property__requirement--optional= t('workarea.storefront.forms.optional')
+        .value
+          = email_field_tag 'review[email]', @review.email, class: 'text-box', autocapitalize: 'off', autocorrect: 'off', autocomplete: 'email'
+          .value__note= t('workarea.storefront.reviews.email_field_note')
+
+    %fieldset.write-review__rating-fieldset
+      %legend.write-review__rating-ledgend= t('workarea.storefront.reviews.rating')
+      %ul.write-review__ratings
+        - (1..5).each do |i|
+          %li.write-review__rating
+            = radio_button_tag 'review[rating]', i, i == 5 ? true : false, class: 'write-review__rating-input', data: { rating_button: '' }
+            = label_tag "review[rating][#{i}]", nil, class: 'write-review__star' do
+              = inline_svg 'workarea/storefront/icons/star.svg', class: 'write-review__star-icon', title: t('workarea.storefront.reviews.stars', count: i)
+
+    .property
+      = label_tag 'review[title]', nil, class: 'property__name' do
+        %span.property__text= t('workarea.storefront.reviews.review_title')
+      .value= text_field_tag 'review[title]', nil, class: 'text-box', required: true
+
+    .property
+      = label_tag 'review[body]', nil, class: 'property__name' do
+        %span.property__text= t('workarea.storefront.reviews.your_review')
+      .value= text_area_tag 'review[body]', nil, class: 'text-box text-box--multi-line', required: true
+
+    .property= recaptcha_tags
+
+    .grid.grid--middle
+      .grid__cell.grid__cell--50
+        = link_to t('workarea.storefront.forms.cancel'), product_path(@product), data: { dialog_close_button: '' }
+      .grid__cell.grid__cell--50
+        .grid.grid--auto.grid--right.grid--middle
+          .grid__cell= button_tag t('workarea.storefront.reviews.submit'), value: 'submit_review', class: 'button'

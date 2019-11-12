@@ -1,0 +1,30 @@
+/*------------------------------------*\
+    #PAGE-CONTENT
+\*------------------------------------*/
+
+$page-content-vertical-margin: $spacing-unit * 4 !default;
+$page-content-checkout-margin: $spacing-unit * 2 !default;
+$page-content-checkout-margin-medium: $spacing-unit * 4 !default;
+$page-content-no-breadcrumbs-margin-top: $spacing-unit * 2 !default;
+
+.page-content {
+    position: relative;
+    z-index: index($page-container, page-content);
+    margin: 0 0 $page-content-vertical-margin;
+}
+
+.page-content--checkout {
+    margin: $page-content-checkout-margin;
+
+    @include respond-to($medium-breakpoint) {
+        margin: $page-content-checkout-margin-medium;
+    }
+}
+
+.page-content--no-breadcrumbs {
+    margin-top: $page-content-no-breadcrumbs-margin-top;
+}
+
+    .page-content__aside {}
+
+    .page-content__main {}

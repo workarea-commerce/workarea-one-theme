@@ -1,0 +1,72 @@
+/*------------------------------------*\
+    #BUTTON
+\*------------------------------------*/
+
+$button-color:            $button-text-color !default;
+$button-bg-color:         $link-color !default;
+$button-bg-color-hover:   $link-color-hover !default;
+
+// This value should match the total height of .text-box in your applciation
+$button-inline-form-min-height: 42px !default;
+
+$button-padding:          $spacing-unit ($spacing-unit * 4)  !default;
+$button-small-padding:    ($spacing-unit / 2) ($spacing-unit * 2) !default;
+$button-large-padding:    ($spacing-unit * 2) ($spacing-unit * 6) !default;
+
+$button-font-size:        $font-size !default;
+$button-small-font-size:  $font-size - 2px !default;
+$button-large-font-size:  $font-size + 8px !default;
+
+
+/**
+ * 1. ensure button text won't receive an underline on hover
+ */
+.button {
+    @extend %button-reset;
+    display: inline-block;
+    padding: $button-padding;
+    color: $button-color;
+    font-size: $button-font-size;
+    background: $button-bg-color;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in;
+
+    &:hover {
+        color: $button-color;
+        text-decoration: none; /* [2] */
+        background-color: $button-bg-color-hover;
+    }
+
+    .inline-form__cell & {
+        min-height: $button-inline-form-min-height;
+    }
+}
+
+.button--small {
+    padding: $button-small-padding;
+    font-size: $button-small-font-size;
+}
+
+.button--large {
+    padding: $button-large-padding;
+    font-size: $button-large-font-size;
+}
+
+.button--full-width {
+    padding-right: 0;
+    padding-left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.button--full-height {
+    height: 100%;
+}
+
+.button--transparent {
+    background-color: $transparent;
+
+    &:hover {
+        background-color: $transparent;
+    }
+}

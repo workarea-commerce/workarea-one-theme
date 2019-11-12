@@ -1,0 +1,109 @@
+/*------------------------------------*\
+    #PRODUCT-MEDIA
+\*------------------------------------*/
+
+$product-media-primary-image-max-width:         255px !default;
+$product-media-primary-image-max-width-wide:    360px !default;
+$product-media-primary-image-ratio: 2 / 3 !default;
+$product-media-alt-image-max-width: 70px !default;
+
+$product-media-alt-image-selected-outline-color:  $primary-color !default;
+$product-media-quickview-height: 400px !default;
+
+.product-media {
+    margin: ($spacing-unit * 2) auto 0;
+    max-width: $product-media-primary-image-max-width;
+
+    @include respond-to($wide-breakpoint) {
+        max-width: $product-media-primary-image-max-width-wide;
+    }
+}
+
+.product-media--carousel {
+    @include respond-to($wide-breakpoint) {
+        margin: ($spacing-unit * 2) 0 0;
+    }
+}
+
+    .product-media__container {
+
+        @include respond-to($wide-breakpoint) {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: row;
+        }
+
+        .ui-dialog & {
+            height: $product-media-quickview-height;
+        }
+    }
+
+        /**
+        * 1. provides positioning context for loading indicator
+        */
+        .product-media__primary-image {
+            position: relative; /* [1] */
+            margin: 0 auto;
+            width: 100%;
+            max-width: $product-media-primary-image-max-width;
+
+            @include respond-to($wide-breakpoint) {
+                max-width: $product-media-primary-image-max-width-wide;
+            }
+
+            .product-media--carousel & {
+                flex: 1 1 auto;
+                order: 1;
+
+                @include respond-to($wide-breakpoint) {
+                    flex: 1 1 auto;
+                    order: 2;
+                }
+            }
+        }
+
+            .product-media__primary-image-link {
+                display: block;
+                padding: 0 0 ((1 / $product-media-primary-image-ratio) * 100%);
+                height: 0;
+
+                .product-media--carousel & {
+                    padding-bottom: 0;
+                    height: auto;
+                }
+            }
+
+                .product-media__primary-image-link-image {}
+
+        .product-media__alt-image-list {
+            @extend %list-reset;
+
+            @include respond-to($wide-breakpoint) {
+                flex: 0 0 22%;
+                order: 1;
+            }
+        }
+
+        .product-media__alt-images {
+            margin-top: $spacing-unit / 2;
+            width: $product-media-alt-image-max-width;
+
+            @include respond-to($wide-breakpoint) {
+                margin-top: $spacing-unit;
+            }
+        }
+
+            .product-media__alt-image {
+                margin: $spacing-unit / 2;
+            }
+
+                .product-media__alt-image-link {
+                    display: inline-block;
+
+                    .slick-current & {
+                        cursor: default;
+                        outline: 2px solid $product-media-alt-image-selected-outline-color;
+                    }
+                }
+
+                .product-media__alt-image-link--selected {}

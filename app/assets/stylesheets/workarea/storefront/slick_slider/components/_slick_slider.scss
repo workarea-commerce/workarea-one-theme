@@ -1,0 +1,171 @@
+/*------------------------------------*\
+    #SLICK-SLIDER
+\*------------------------------------*/
+
+$slick-slider-elements: (
+    slick-list,
+    slick-slider__nav,
+    slick-slider__dots
+) !default;
+
+$slick-slider-dots-width:         $font-size !default;
+$slick-slider-dots-color:         $link-color !default;
+$slick-slider-dots-bg-color:      $background-color !default;
+$slick-slider-dots-border-width:  2px !default;
+$slick-slider-dots-spacing:       2 * $spacing-unit !default;
+$slick-slider-nav-font-size:      40px !default;
+$slick-slider-nav-color:          $font-color !default;
+$slick-slider-nav-bg-color:       transparent !default;
+
+$slick-slider-nav-font-size-hero-slider: $spacing-unit * 3 !default;
+$slick-slider-nav-color-hero-slider: $primary-nav-links !default;
+$slick-slider-nav-bg-color-hero-slider: $background-secondary-color !default;
+
+$slick-slider-arrows-offset:      -30px !default;
+
+$slick-slider-active-color:    $slick-slider-dots-color !default;
+
+
+.slick-slider {
+    transition: opacity 0.15s ease-in;
+}
+
+.slick-slider--waiting-for-images {
+    opacity: 0;
+}
+
+.slick-slider--images-loaded {
+    opacity: 1;
+}
+
+        .slick-slider__image-wrapper {}
+
+            .slick-slider__image {}
+
+    .slick-slider__nav {
+        @extend %button-reset;
+        @include center('vertical');
+        z-index: index($slick-slider-elements, slick-slider__nav);
+        background: $slick-slider-nav-bg-color;
+        cursor: pointer;
+
+        .hero-slider-content-block & {
+            background-color: $slick-slider-nav-bg-color-hero-slider;
+        }
+    }
+
+    .slick-slider__nav--prev {
+        left: $slick-slider-arrows-offset;
+
+        .product-list-content-block & {
+            left: 0;
+        }
+
+        .hero-slider-content-block & {
+            left: 0;
+        }
+
+        .hero-slider-content-block--full-bleed & {
+            left: $slick-slider-arrows-offset * -1;
+        }
+
+        .slick-vertical & {
+            top: $slick-slider-arrows-offset;
+            right: 50%;
+            left: auto;
+            transform: translateX(50%) rotate(90deg);
+        }
+    }
+
+    .slick-slider__nav--next {
+        right: $slick-slider-arrows-offset;
+
+        .product-list-content-block & {
+            right: 0;
+        }
+
+        .hero-slider-content-block & {
+            right: 0;
+        }
+
+        .hero-slider-content-block--full-bleed & {
+            right: $slick-slider-arrows-offset * -1;
+        }
+
+        .slick-vertical & {
+            top: auto;
+            right: 50%;
+            bottom: $slick-slider-arrows-offset;
+            transform: translateX(50%) rotate(90deg);
+        }
+    }
+
+        .slick-slider__nav-icon {
+            @include svg('icons/arrow_left.svg', $slick-slider-nav-font-size);
+            fill: $slick-slider-nav-color;
+
+            .hero-slider-content-block & {
+                padding: $spacing-unit;
+                background: none;
+                fill: $slick-slider-nav-color-hero-slider;
+            }
+        }
+
+        .slick-slider__nav-icon--left  {}
+        .slick-slider__nav-icon--right { background-image: image-url('workarea/storefront/icons/arrow_right.svg'); }
+
+
+    .slick-slider__dots {
+        @extend %inline-list;
+        z-index: index($slick-slider-elements, slick-slider__dots);
+        text-align: center;
+
+        .slick-vertical & {
+            @include center($to: vertical);
+            left: -100%;
+        }
+
+        li {
+            margin: $slick-slider-dots-spacing;
+
+            .slick-vertical & {
+                display: block;
+            }
+        }
+
+        button {
+            display: block;
+            padding: 0;
+            width:  $slick-slider-dots-width;
+            height: $slick-slider-dots-width;
+            font-size: 0;
+            background: $slick-slider-dots-bg-color;
+            border: $slick-slider-dots-border-width solid $slick-slider-dots-color;
+            border-radius: 50%;
+            cursor: pointer;
+            outline: 0;
+
+            &:hover,
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+
+
+/*------------------------------------*\
+    #SLICK-LIST
+\*------------------------------------*/
+
+.slick-list { z-index: index($slick-slider-elements, slick-list); }
+
+
+/*------------------------------------*\
+    #SLICK-ACTIVE
+\*------------------------------------*/
+
+.slick-active {
+    button {
+        background: $slick-slider-active-color;
+    }
+}
