@@ -26,6 +26,6 @@ Gem::Specification.new do |s|
   s.add_dependency "workarea-share", "~> 1.x", ">= 1.2.x"
   s.add_dependency "workarea-reviews", "~> 3.x"
   s.add_dependency "workarea-super_hero", "~> 2.x", ">= 2.1.x"
-  s.add_dependency "workarea-wish_lists", "~> 2.x", ">= 2.1.x"
+  s.add_dependency "workarea-wish_lists", ">= 2.1.x"
   s.add_dependency "workarea-swatches", "~> 1.x"
 end
