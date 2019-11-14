@@ -1,4 +1,6 @@
 source "https://rubygems.org"
+source "https://gems.weblinc.com"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Declare your gem's dependencies in one_theme.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -13,4 +15,6 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
-gem 'workarea', git: 'https://github.com/workarea-commerce/workarea.git'
+gem 'workarea', github: 'workarea-commerce/workarea'
+gem 'workarea-filter_dropdowns', github: 'workarea-commerce/workarea-filter-dropdowns'
+gem 'workarea-accordions', github: 'workarea-commerce/workarea-accordions'
