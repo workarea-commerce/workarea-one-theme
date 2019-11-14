@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "workarea", "~> 3.x", ">= 3.4.x"
   s.add_dependency "workarea-theme", "~> 1.x"
-  s.add_dependency "workarea-product_quickview", "~> 1.x", ">= 1.2.x"
+  s.add_dependency "workarea-product_quickview", ">= 1.2.x"
   s.add_dependency "workarea-slick_slider", "~> 1.x"
   s.add_dependency "workarea-blog", ">= 3.x", ">= 3.2.x"
   s.add_dependency "workarea-content_search", "~> 1.x"
