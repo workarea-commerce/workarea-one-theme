@@ -79,7 +79,9 @@
                     .page-header__search{ data: { header_search_ui: '' } }
                       = form_tag search_path, method: 'get', class: 'page-header__search-form', role: 'search' do
                         .page-header__search-value
-                          .value= search_field_tag :q, params[:q], id: 'storefront_search', class: 'text-box text-box--secondary', title: t('workarea.storefront.searches.search'), placeholder: t('workarea.storefront.searches.search'), tabindex: 1, required: true, data: { search_field: '' }
+                          .value= search_field_tag :q, params[:q], id: 'storefront_search', class: 'text-box text-box--secondary', title: t('workarea.storefront.searches.search'), placeholder: t('workarea.storefront.searches.search'), tabindex: 1, required: true
+                          = append_partials('storefront.page_header_search_value')
+
                         = button_tag value: 'search', class: 'page-header__search-button', tabindex: 2 do
                           = inline_svg('workarea/storefront/icons/search.svg', class: 'page-header__search-icon svg-icon svg-icon--theme-header', title: t('workarea.storefront.forms.go'))
 
