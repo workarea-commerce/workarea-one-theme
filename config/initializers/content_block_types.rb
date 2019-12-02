@@ -1,4 +1,4 @@
-Workarea.define_content_block_types do
+Workarea::Content.define_block_types do
   block_type "Taxonomy With Products" do
     tags %w(taxonomy)
     description "Insert a branch of the site Taxonomy with products"
