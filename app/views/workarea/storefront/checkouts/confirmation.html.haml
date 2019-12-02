@@ -7,6 +7,8 @@
   - if @content.content_blocks_for('confirmation').present?
     = render_content_blocks(@content.content_blocks_for('confirmation'))
 
+  = append_partials('storefront.checkout_confirmation_text')
+
   .order-summary
     .grid
       .grid__cell.grid__cell--50-at-medium
@@ -51,6 +53,6 @@
                 %th= t('workarea.storefront.orders.status')
                 %td= @order.fulfillment_status
 
-  = render 'workarea/storefront/orders/summary', order: @order, show_fulfillment: false
+  = render 'workarea/storefront/orders/summary', order: @order
 
   = append_partials('storefront.checkout_confirmation')

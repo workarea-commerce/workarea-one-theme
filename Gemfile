@@ -14,7 +14,4 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
-gem 'workarea', github: 'workarea-commerce/workarea'
-gem 'workarea-filter_dropdowns', github: 'workarea-commerce/workarea-filter-dropdowns'
-gem 'workarea-accordions', github: 'workarea-commerce/workarea-accordions'
-gem 'workarea-product_quickview', github: 'workarea-commerce/workarea-product-quickview'
+gem 'workarea'

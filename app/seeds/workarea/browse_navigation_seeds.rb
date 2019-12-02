@@ -3,10 +3,14 @@ module Workarea
     def perform
       puts "Adding Primary Navigation content..."
 
-      browsing_pages = Content::Page.tagged_with("browsing")
-      categories = Catalog::Category.all.to_a
+      if new = Catalog::Category.find_by(name: 'New') rescue nil
+        taxon = Navigation::Taxon.root.children.create!(navigable: new)
+        menu = Navigation::Menu.create!(taxon: taxon)
+      end
 
-      browsing_pages.each do |page|
+      Workarea.config.default_seeds_taxonomy.each do |top_level, children|
+        page = Content::Page.find_by(name: top_level)
+        categories = Catalog::Category.any_in(name: children)
         taxon = Navigation::Taxon.root.children.create!(navigable: page)
         menu = Navigation::Menu.create!(taxon: taxon)
 
@@ -16,14 +20,14 @@ module Workarea
         content.blocks.create!(
           type: "taxonomy_with_category_summary",
           data: {
-            start: taxon.id.to_s,
+            start: taxon.id,
+            show_starting_taxon: false,
             category: Workarea::Catalog::Category.sample.try(:id).try(:to_s)
           }
         )
 
-        3.times do
-          next if categories.blank?
-          taxon.children.create!(navigable: categories.pop)
+        categories.each do |category|
+          taxon.children.create!(navigable: category)
         end
       end
     end

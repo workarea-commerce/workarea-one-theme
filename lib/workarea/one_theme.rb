@@ -13,6 +13,7 @@ require "workarea/reviews"
 require "workarea/super_hero"
 require "workarea/wish_lists"
 require "workarea/swatches"
+require "workarea/search_autocomplete"
 
 require "workarea/one_theme/engine"
 require "workarea/one_theme/version"
