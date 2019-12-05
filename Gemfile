@@ -15,3 +15,6 @@ gemspec
 # gem 'byebug', group: [:development, :test]
 
 gem 'workarea'
+
+# TODO just a test
+gem 'workarea-filter_dropdowns', github: 'workarea-commerce/workarea-filter-dropdowns'
