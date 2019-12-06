@@ -1,3 +1,23 @@
+Workarea One Theme 1.3.0 (2019-12-06)
+--------------------------------------------------------------------------------
+
+*   Upgrade to Workarea v3.5 & Friends
+
+    ONETHEME-1
+    Curt Howard
+
+*   Updates for v3.5
+
+    Part of this is to take out the old search autocomplete to pave the way
+    to integrating the new plugin.
+    Ben Crouse
+
+*   Loosen wish lists dependency
+
+    Ben Crouse
+
+
+
 Workarea One Theme 1.2.0 (2019-04-02)
 --------------------------------------------------------------------------------
 
