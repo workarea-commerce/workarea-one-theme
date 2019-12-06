@@ -66,12 +66,6 @@ $blog-entry-products-background: $background-color !default;
         padding: 0 $blog-entry-content-padding;
     }
 
-    .blog-entry__share {
-        margin-bottom: $vertical-margin;
-    }
-
-        .blog-entry__share-heading {}
-
     .blog-entry__products {
         padding-top: $spacing-unit * 2;
         background-color: $blog-entry-products-background;

@@ -6,13 +6,13 @@
         %p.message__type
           %span.message__icon= t('workarea.storefront.messages.info')
         %p.message__text
-          #{t('workarea.storefront.gift_cards.balance', amount: number_to_currency(step.gift_card_balance))}
-          #{t('workarea.storefront.gift_cards.applied_to_order', amount: number_to_currency(step.gift_card_amount))}
+          #{t('workarea.storefront.gift_cards.balance_html', amount: number_to_currency(step.gift_card_balance))}
+          #{t('workarea.storefront.gift_cards.applied_to_order_html', amount: number_to_currency(step.gift_card_amount))}
 
           - if step.tender_required?
             #{t('workarea.storefront.gift_cards.tender_required_html', amount: number_to_currency(step.order_balance))}
           - else
-            #{t('workarea.storefront.gift_cards.place_order', amount: number_to_currency(step.gift_card_amount))}
+            #{t('workarea.storefront.gift_cards.place_order')}
 
     = optional_field(t('workarea.storefront.gift_cards.enter_gift_card_prompt'), step.gift_cards, step.failed_gift_card) do
 

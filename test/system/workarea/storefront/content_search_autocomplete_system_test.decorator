@@ -1,5 +1,7 @@
+require 'test_helper'
+
 module Workarea
-  decorate Storefront::ContentSearchAutocompleteSystemTest, with: 'one_theme' do
+  decorate Storefront::ContentSearchAutocompleteSystemTest, with: :one_theme do
     def test_content_appears_in_autocomplete
       create_page(name: 'Content Test One')
       create_page(name: 'Content Test Two')
@@ -11,7 +13,8 @@ module Workarea
 
       visit storefront.root_path
 
-      find('.page-header__search-icon').click
+      find('[data-header-search-ui] button').click
+
       fill_in :q, with: 'te'
 
       within '#search_autocomplete' do

@@ -1,5 +1,5 @@
 - if category.present?
-  .category-summary-content-block{ data: { analytics: product_list_analytics_data(t('workarea.storefront.content_blocks.category_summary.summary_of', name: category.name)).to_json } }  
+  .category-summary-content-block{ data: { analytics: product_list_analytics_data(t('workarea.storefront.content_blocks.category_summary.summary_of', name: category.name)).to_json } }
     = link_to view_model.data[:content_link].presence || category_path(category), class: 'category-summary-content-block__content', style: view_model.content_background_style do
       %span.category-summary-content-block__content-container
         %span.category-summary-content-block__heading= view_model.title
@@ -13,7 +13,8 @@
 
         - else
           - products.each do |product|
+            = render_schema_org(product_schema(product))
             .grid__cell.grid__cell--50.grid__cell--25-at-wide
-              %div.product-summary.product-summary--small{ itemscope: true, itemtype: 'http://schema.org/Product' }
+              %div.product-summary.product-summary--small
                 = render 'workarea/storefront/products/summary', product: product
-  
+

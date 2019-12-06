@@ -17,10 +17,6 @@ en:
       products:
         close_filter_results: Close Filters
         filter_title: "%{name}"
-      reviews:
-        first_name_field_note: Only the first letter of your name will be displayed.
-        last_name_field_note: Only the first letter of your name will be displayed.
-        email_field_note: Will only be used if we need to get in touch with you.
       shares:
         share_heading: Share
       users:
