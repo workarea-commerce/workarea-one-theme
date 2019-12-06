@@ -46,6 +46,7 @@ task :release do
   system "git push --tags"
 
   system "gem build workarea-one_theme.gemspec"
+  system "gem push workarea-one_theme-#{Workarea::OneTheme::VERSION}.gem"
   system "gem push workarea-one_theme-#{Workarea::OneTheme::VERSION}.gem --host #{host}"
   system "rm workarea-one_theme-#{Workarea::OneTheme::VERSION}.gem"
 end
