@@ -1,3 +1,16 @@
+Workarea One Theme 1.3.1 (2020-08-25)
+--------------------------------------------------------------------------------
+
+*   Remove now-unnecessary test decorator
+
+    We're now skipping this test in the blog plugin unless it's running in
+    the blog plugin's build so this decorator isn't necessary. It can cause
+    failures on a project as-written.
+
+    Ben Crouse
+
+
+
 Workarea One Theme 1.3.0 (2019-12-06)
 --------------------------------------------------------------------------------
 
