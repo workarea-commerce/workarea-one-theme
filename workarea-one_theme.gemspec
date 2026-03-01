@@ -30,4 +30,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'workarea-wish_lists', '>= 3.1.0'
   s.add_dependency 'workarea-swatches', '>= 1.0.5'
   s.add_dependency 'workarea-search_autocomplete', '>= 1.0.0'
+s.required_ruby_version = ['>= 2.7', '< 3.5']
 end
